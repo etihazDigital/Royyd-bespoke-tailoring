@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+ROYYD Order Success
+</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body>
+
+<section class="success-page">
+
+<div class="success-box">
+
+<div class="success-icon">
+
+✓
+
+</div>
+
+<h1>
+Order Confirmed
+</h1>
+
+<p class="success-text">
+
+Thank you for choosing ROYYD.
+
+Your tailoring order has been successfully placed.
+
+</p>
+
+<div class="success-order">
+
+<p>
+Order ID
+</p>
+
+<h3 id="orderNumber">
+
+#ROYYD2847
+
+</h3>
+
+</div>
+
+<div class="success-delivery">
+
+Estimated Delivery:
+<span>
+7 - 10 Business Days
+</span>
+
+</div>
+
+<div class="success-buttons">
+
+<a href="index.html"
+class="success-btn">
+
+Continue Shopping
+
+</a>
+
+<a href="Bespoke.html"
+class="outline-btn">
+
+Explore More
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+const randomOrder =
+
+"#ROYYD" +
+
+Math.floor(Math.random() * 99999);
+
+document.getElementById("orderNumber")
+.innerText = randomOrder;
+
+localStorage.removeItem("royydCart");
+
+</script>
+
+</body>
+
+</html>

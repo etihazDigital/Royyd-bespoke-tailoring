@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+ROYYD Signup
+</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body>
+
+<section class="login-page">
+
+<div class="login-box">
+
+<h1>
+Create Account
+</h1>
+
+<p class="login-subtext">
+
+Join the ROYYD tailoring experience
+
+</p>
+
+<div class="login-form">
+
+<input type="text"
+id="signupName"
+placeholder="Full Name">
+
+<input type="email"
+id="signupEmail"
+placeholder="Email Address">
+
+<input type="tel"
+id="signupPhone"
+placeholder="Phone Number">
+
+<input type="password"
+id="signupPassword"
+placeholder="Create Password">
+
+<button class="login-btn"
+id="signupBtn">
+
+Create Account
+
+</button>
+
+</div>
+
+<div class="login-links">
+
+<a href="login.html">
+
+Already Have Account?
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<script type="module">
+
+import { app }
+
+from "./firebase.js";
+
+import {
+
+getAuth,
+
+createUserWithEmailAndPassword
+
+}
+
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+
+const auth =
+getAuth(app);
+
+const signupBtn =
+document.getElementById("signupBtn");
+
+signupBtn.addEventListener("click", () => {
+
+const name =
+document.getElementById("signupName")
+.value;
+
+const phone =
+document.getElementById("signupPhone")
+.value;
+
+const email =
+document.getElementById("signupEmail")
+.value;
+
+const password =
+document.getElementById("signupPassword")
+.value;
+
+if(
+
+name === "" ||
+
+phone === "" ||
+
+email === "" ||
+
+password === ""
+
+){
+
+alert("Please Fill All Details");
+
+return;
+
+}
+
+createUserWithEmailAndPassword(
+
+auth,
+
+email,
+
+password
+
+)
+
+.then((userCredential) => {
+
+const user =
+userCredential.user;
+
+localStorage.setItem(
+
+"royydCurrentUser",
+
+JSON.stringify({
+
+name,
+
+phone,
+
+email,
+
+uid:user.uid
+
+})
+
+);
+
+alert("Account Created Successfully");
+
+window.location.href =
+"account.html";
+
+})
+
+.catch((error) => {
+
+alert(error.message);
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>

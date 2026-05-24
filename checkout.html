@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+ROYYD Checkout
+</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="checkout-navbar">
+
+<h2>
+ROYYD
+</h2>
+
+<a href="cart.html">
+
+Back To Cart
+
+</a>
+
+</header>
+
+<!-- CHECKOUT -->
+
+<section class="checkout-section">
+
+<div class="checkout-container">
+
+<!-- LEFT -->
+
+<div class="checkout-left">
+
+<h1>
+Checkout
+</h1>
+
+<div class="checkout-form">
+
+<input type="text"
+id="checkoutName"
+placeholder="Full Name">
+
+<input type="email"
+id="checkoutEmail"
+placeholder="Email Address">
+
+<input type="tel"
+id="checkoutPhone"
+placeholder="Phone Number">
+
+<textarea
+id="checkoutAddress"
+placeholder="Shipping Address"></textarea>
+
+<input type="text"
+id="checkoutCity"
+placeholder="City">
+
+<input type="text"
+id="checkoutState"
+placeholder="State">
+
+<input type="text"
+id="checkoutPincode"
+placeholder="Pincode">
+
+</div>
+
+</div>
+
+<!-- RIGHT -->
+
+<div class="checkout-right">
+
+<h2>
+Order Summary
+</h2>
+
+<div id="checkout-items">
+
+</div>
+
+<div class="checkout-summary-row">
+
+<span>
+Subtotal
+</span>
+
+<p id="checkoutSubtotal">
+₹ 0
+</p>
+
+</div>
+
+<div class="checkout-summary-row">
+
+<span>
+Shipping
+</span>
+
+<p>
+Free
+</p>
+
+</div>
+
+<div class="checkout-total">
+
+<span>
+Total
+</span>
+
+<p id="checkoutTotal">
+
+₹ 0
+
+</p>
+
+</div>
+
+<button class="place-order-btn"
+id="placeOrderBtn">
+
+Proceed To Payment
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<script>
+
+const checkoutItems =
+document.getElementById("checkout-items");
+
+let cart =
+JSON.parse(localStorage.getItem("royydCart")) || [];
+
+let total = 0;
+
+cart.forEach((product) => {
+
+total += Number(product.price) * product.quantity;
+
+checkoutItems.innerHTML += `
+
+<div class="checkout-product">
+
+<div>
+
+<h3>
+${product.title}
+</h3>
+
+<p>
+${product.type}
+</p>
+
+${product.size ? `
+<p>
+Size: ${product.size}
+</p>
+` : ""}
+
+${product.collar ? `
+<p>
+Collar: ${product.collar}
+</p>
+` : ""}
+
+</div>
+
+<span>
+₹ ${product.price}
+</span>
+
+</div>
+
+`;
+
+});
+
+document.getElementById("checkoutSubtotal")
+.innerText = "₹ " + total;
+
+document.getElementById("checkoutTotal")
+.innerText = "₹ " + total;
+
+const placeOrderBtn =
+document.getElementById("placeOrderBtn");
+
+placeOrderBtn.addEventListener("click", () => {
+
+const inputs =
+document.querySelectorAll(
+".checkout-form input, .checkout-form textarea"
+);
+
+let isValid = true;
+
+inputs.forEach((input) => {
+
+if(input.value.trim() === ""){
+
+isValid = false;
+
+input.style.border =
+"1px solid red";
+
+}else{
+
+input.style.border =
+"1px solid #ddd";
+
+}
+
+});
+
+if(!isValid){
+
+alert("Please Fill All Details");
+
+return;
+
+}
+
+// SAVE ORDER
+
+const existingOrders =
+
+JSON.parse(
+localStorage.getItem("royydOrders")
+) || [];
+
+const savedAddress = {
+
+name:
+document.getElementById("checkoutName")
+.value,
+
+email:
+document.getElementById("checkoutEmail")
+.value,
+
+phone:
+document.getElementById("checkoutPhone")
+.value,
+
+address:
+document.getElementById("checkoutAddress")
+.value,
+
+city:
+document.getElementById("checkoutCity")
+.value,
+
+state:
+document.getElementById("checkoutState")
+.value,
+
+pincode:
+document.getElementById("checkoutPincode")
+.value
+
+};
+
+localStorage.setItem(
+"royydSavedAddress",
+JSON.stringify(savedAddress)
+);
+
+
+const newOrder = {
+
+orderId:
+"#ROYYD" +
+Math.floor(Math.random() * 99999),
+
+date:
+new Date().toLocaleDateString(),
+
+products: cart,
+
+total: total,
+
+status: "Processing"
+
+};
+
+existingOrders.push(newOrder);
+
+localStorage.setItem(
+"royydOrders",
+JSON.stringify(existingOrders)
+);
+
+// REDIRECT
+
+window.location.href =
+"success.html";
+
+});
+
+
+</script>
+
+</body>
+
+</html>

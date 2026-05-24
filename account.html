@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+ROYYD Account
+</title>
+
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body>
+
+<section class="account-page">
+
+<!-- SIDEBAR -->
+
+<div class="account-sidebar">
+
+<h2>
+ROYYD
+</h2>
+
+<ul>
+
+<li class="active-account"
+data-section="dashboardSection">
+
+Dashboard
+
+</li>
+
+<li data-section="ordersSection">
+
+Orders
+
+</li>
+
+<li data-section="sizesSection">
+
+Saved Sizes
+
+</li>
+
+<li data-section="addressSection">
+
+Addresses
+
+</li>
+
+<li id="logoutBtn">
+
+Logout
+
+</li>
+
+</ul>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="account-main">
+
+<h1>
+
+Welcome Back
+
+</h1>
+
+<p class="account-subtext">
+
+Manage your tailoring experience
+
+</p>
+
+
+<!-- CARDS -->
+
+
+<div id="dashboardSection"
+class="account-section">
+
+<div class="recent-orders">
+
+<h2>
+Dashboard
+</h2>
+
+<div id="ordersContainer">
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="ordersSection"
+class="account-section"
+style="display:none;">
+
+<div class="recent-orders">
+
+<h2>
+All Orders
+</h2>
+
+<div id="allOrdersContainer">
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="sizesSection"
+class="account-section"
+style="display:none;">
+
+<div class="recent-orders">
+
+<h2>
+Saved Sizes
+</h2>
+
+<div id="savedSizesContainer">
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="addressSection"
+class="account-section"
+style="display:none;">
+
+<div class="recent-orders">
+
+<h2>
+Saved Addresses
+</h2>
+
+<div id="savedAddressContainer">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+</section>
+
+<script>
+
+    const currentUser =
+
+JSON.parse(
+localStorage.getItem("royydCurrentUser")
+);
+
+if(!currentUser){
+
+window.location.href =
+"login.html";
+
+}
+
+const ordersContainer =
+document.getElementById("ordersContainer");
+
+const orders =
+JSON.parse(
+localStorage.getItem("royydOrders")
+) || [];
+
+if(orders.length === 0){
+
+ordersContainer.innerHTML = `
+
+<div class="empty-account">
+
+<h2>
+No Orders Yet
+</h2>
+
+<p>
+
+Your ROYYD orders and tailoring history
+will appear here.
+
+</p>
+
+<a href="Bespoke.html"
+class="success-btn">
+
+Start Shopping
+
+</a>
+
+</div>
+
+`;
+
+}else{
+
+orders.reverse().forEach((order) => {
+
+ordersContainer.innerHTML += `
+
+<div class="order-item">
+
+<div>
+
+<h3>
+${order.orderId}
+</h3>
+
+<p>
+${order.date}
+</p>
+
+<p>
+${order.products.length} Item(s)
+</p>
+
+</div>
+
+<span>
+
+${order.status}
+
+</span>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+
+const sidebarItems =
+document.querySelectorAll(
+".account-sidebar li[data-section]"
+);
+
+const sections =
+document.querySelectorAll(
+".account-section"
+);
+
+sidebarItems.forEach((item) => {
+
+item.addEventListener("click", () => {
+
+sidebarItems.forEach((nav) => {
+
+nav.classList.remove("active-account");
+
+});
+
+item.classList.add("active-account");
+
+const target =
+item.getAttribute("data-section");
+
+sections.forEach((section) => {
+
+section.style.display = "none";
+
+});
+
+document.getElementById(target)
+.style.display = "block";
+
+});
+
+});
+
+const logoutBtn =
+document.getElementById("logoutBtn");
+
+logoutBtn.addEventListener("click", () => {
+
+localStorage.removeItem("royydCurrentUser");
+
+window.location.href =
+"login.html";
+
+});
+
+const savedSizesContainer =
+document.getElementById(
+"savedSizesContainer"
+);
+
+const savedSizes =
+JSON.parse(
+localStorage.getItem("royydSavedSizes")
+);
+
+if(savedSizesContainer){
+
+if(savedSizes){
+
+savedSizesContainer.innerHTML = `
+
+<div class="saved-size-card">
+
+<p>
+Upper Body:
+<span>${savedSizes.upperBody}</span>
+</p>
+
+<p>
+Lower Body:
+<span>${savedSizes.lowerBody}</span>
+</p>
+
+<p>
+Height:
+<span>${savedSizes.height}</span>
+</p>
+
+<p>
+Shirt Size:
+<span>${savedSizes.shirtSize}</span>
+</p>
+
+<p>
+Shoulder:
+<span>${savedSizes.shoulderType}</span>
+</p>
+
+<p>
+Preferred Fit:
+<span>${savedSizes.preferredFit}</span>
+</p>
+
+</div>
+
+`;
+
+}else{
+
+savedSizesContainer.innerHTML = `
+
+<p class="account-placeholder">
+
+No saved measurements yet.
+
+</p>
+
+`;
+
+}
+
+}
+
+const savedAddressContainer =
+document.getElementById(
+"savedAddressContainer"
+);
+
+const savedAddress =
+JSON.parse(
+localStorage.getItem("royydSavedAddress")
+);
+
+if(savedAddressContainer){
+
+if(savedAddress){
+
+savedAddressContainer.innerHTML = `
+
+<div class="saved-size-card">
+
+<p>
+Name:
+<span>${savedAddress.name}</span>
+</p>
+
+<p>
+Phone:
+<span>${savedAddress.phone}</span>
+</p>
+
+<p>
+Email:
+<span>${savedAddress.email}</span>
+</p>
+
+<p>
+Address:
+<span>${savedAddress.address}</span>
+</p>
+
+<p>
+City:
+<span>${savedAddress.city}</span>
+</p>
+
+<p>
+State:
+<span>${savedAddress.state}</span>
+</p>
+
+<p>
+Pincode:
+<span>${savedAddress.pincode}</span>
+</p>
+
+</div>
+
+`;
+
+}else{
+
+savedAddressContainer.innerHTML = `
+
+<p class="account-placeholder">
+
+No saved address yet.
+
+</p>
+
+`;
+
+}
+
+}
+
+</script>
+</body>
+
+</html>

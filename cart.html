@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ROYYD Cart</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header class="navbar">
+
+<div class="logo-wrapper">
+
+<img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD Logo">
+
+<div class="logo-text">
+
+<h2>ROYYD</h2>
+
+<span>
+FINE CUSTOM TAILORING
+</span>
+
+</div>
+
+</div>
+
+<nav>
+<ul class="nav-links">
+<li><a href="index.html">Home</a></li>
+<li><a href="Bespoke.html">Collections</a></li>
+<li><a href="contact.html">Contact</a></li>
+</ul>
+</nav>
+
+</header>
+
+<!-- CART HERO -->
+
+<section class="cart-hero">
+
+<h1>
+Your Cart
+</h1>
+
+<p>
+Review your selected ROYYD garments before checkout.
+</p>
+
+</section>
+
+<!-- CART SECTION -->
+
+<section class="cart-section">
+
+<div class="cart-container">
+
+
+<div class="cart-items" 
+id="cart-items">
+</div>
+
+<div class="cart-summary">
+
+<h2>
+Order Summary
+</h2>
+
+<div class="summary-row">
+
+<span>Subtotal</span>
+
+<span id="subtotal">
+₹ 0
+</span>
+
+</div>
+
+
+<div class="summary-row">
+<span>Shipping</span>
+<span>Free</span>
+</div>
+
+<div class="summary-total">
+<span>Total</span>
+<span id="total">
+₹ 0
+</span>
+</div>
+
+<a href="checkout.html"
+class="checkout-btn">
+
+Proceed To Checkout
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer">
+
+<h2>ROYYD</h2>
+
+<p>
+Fine Custom Tailoring For Modern Gentlemen.
+</p>
+
+</footer>
+<script>
+
+const cartContainer = document.getElementById('cart-items');
+
+let cart = JSON.parse(localStorage.getItem('royydCart')) || [];
+
+let subtotal = 0;
+
+if(cart.length === 0){
+
+cartContainer.innerHTML = `
+
+<div class="empty-cart">
+
+<h2>
+Your Cart Is Empty
+</h2>
+
+<p>
+Add ROYYD pieces to begin your luxury tailoring journey.
+</p>
+
+<a href="Bespoke.html"
+class="empty-cart-btn">
+
+Explore Collection
+
+</a>
+
+</div>
+
+`;
+
+}
+
+if(cart.length > 0){
+
+cart.forEach((product, index) => {
+
+subtotal += Number(product.price) * product.quantity;    
+
+cartContainer.innerHTML += `
+
+<div class="cart-card">
+
+<div class="cart-image">
+
+<img src="${product.image}" alt="${product.title}">
+
+</div>
+
+<div class="cart-details">
+
+<h2>
+${product.title}
+</h2>
+
+<p class="cart-category">
+
+${product.type || "Ready To Wear"}
+
+</p>
+
+<p class="cart-price">
+₹ ${product.price}
+</p>
+
+${product.size ? `
+
+<p class="cart-meta">
+Size: ${product.size}
+</p>
+
+` : ""}
+
+${product.type === "Bespoke Custom" ? `
+
+<div class="cart-custom-data">
+
+<p>Collar: ${product.collar}</p>
+
+<p>Cuff: ${product.cuff}</p>
+
+<p>Sleeve: ${product.sleeve}</p>
+
+<p>Pocket: ${product.pocket}</p>
+
+<p>Buttons: ${product.buttons}</p>
+
+</div>
+
+` : ""}
+
+
+<div class="cart-actions">
+
+<button class="minus-btn"
+data-index="${index}">
+−
+</button>
+
+<span class="cart-quantity">
+${product.quantity}
+</span>
+
+<button class="plus-btn"
+data-index="${index}">
++
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+document.getElementById('subtotal').innerText =
+'₹ ' + subtotal;
+
+document.getElementById('total').innerText =
+'₹ ' + subtotal;
+
+}
+
+const plusButtons =
+document.querySelectorAll('.plus-btn');
+
+plusButtons.forEach(button => {
+
+button.addEventListener('click', () => {
+
+const index =
+button.dataset.index;
+
+cart[index].quantity++;
+
+localStorage.setItem(
+'royydCart',
+JSON.stringify(cart)
+);
+
+location.reload();
+
+});
+
+});
+
+
+const minusButtons =
+document.querySelectorAll('.minus-btn');
+
+minusButtons.forEach(button => {
+
+button.addEventListener('click', () => {
+
+const index =
+button.dataset.index;
+
+if(cart[index].quantity > 1){
+
+cart[index].quantity--;
+
+} else {
+
+cart.splice(index, 1);
+
+}
+
+localStorage.setItem(
+'royydCart',
+JSON.stringify(cart)
+);
+
+location.reload();
+
+});
+
+});
+
+</script>
+</body>
+</html>
