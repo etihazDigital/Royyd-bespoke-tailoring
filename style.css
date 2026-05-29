@@ -2489,6 +2489,36 @@ color:#888;
 margin-bottom:15px;
 }
 
+.bespoke-badge{
+
+display:inline-flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:8px 16px;
+
+background:#111;
+
+color:#d4af37;
+
+border-radius:40px;
+
+font-size:11px;
+
+letter-spacing:1.5px;
+
+text-transform:uppercase;
+
+width:fit-content;
+
+margin-bottom:18px;
+
+border:1px solid rgba(212,175,55,0.25);
+
+}
+
 .cart-price{
 font-size:18px;
 font-weight:500;
@@ -2648,6 +2678,56 @@ color: #444;
 font-family: 'Poppins', sans-serif;
 
 line-height: 1.5;
+
+}
+
+.custom-row{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:10px 0;
+
+border-bottom:1px solid rgba(0,0,0,0.06);
+
+gap:20px;
+
+}
+
+.custom-row:last-child{
+
+border-bottom:none;
+
+}
+
+.custom-row span{
+
+font-size:12px;
+
+letter-spacing:1px;
+
+text-transform:uppercase;
+
+color:#888;
+
+font-family:'Poppins', sans-serif;
+
+}
+
+.custom-row p{
+
+font-size:13px;
+
+color:#111;
+
+font-weight:500;
+
+text-align:right;
+
+margin:0;
 
 }
 

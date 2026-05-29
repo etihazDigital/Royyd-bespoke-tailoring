@@ -196,11 +196,25 @@ Collar: ${product.collar}
 </p>
 ` : ""}
 
+${product.fit ? `
+<p>
+Fit: ${product.fit}
+</p>
+` : ""}
+
 </div>
+
+<div class="checkout-product-right">
+
+<p>
+Qty: ${product.quantity}
+</p>
 
 <span>
 ₹ ${product.price}
 </span>
+
+</div>
 
 </div>
 

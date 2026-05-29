@@ -183,11 +183,23 @@ cartContainer.innerHTML += `
 ${product.title}
 </h2>
 
+${product.type === "Bespoke Custom" ? `
+
+<p class="cart-category bespoke-badge">
+
+Bespoke Custom
+
+</p>
+
+` : `
+
 <p class="cart-category">
 
 ${product.type || "Ready To Wear"}
 
 </p>
+
+`}
 
 <p class="cart-price">
 ₹ ${product.price}
@@ -201,24 +213,59 @@ Size: ${product.size}
 
 ` : ""}
 
-${product.type === "Bespoke Custom" ? `
+${product.fit ? `
+
+<p class="cart-meta">
+Fit: ${product.fit}
+</p>
+
+` : ""}
+
+${product.type === "Bespoke Custom" && product.sizeType === "shirt" ? `
 
 <div class="cart-custom-data">
 
-<p>Collar: ${product.collar}</p>
+<div class="custom-row">
+<span>Collar</span>
+<p>${product.collar}</p>
+</div>
 
-<p>Cuff: ${product.cuff}</p>
+<div class="custom-row">
+<span>Cuff</span>
+<p>${product.cuff}</p>
+</div>
 
-<p>Sleeve: ${product.sleeve}</p>
+<div class="custom-row">
+<span>Sleeve</span>
+<p>${product.sleeve}</p>
+</div>
 
-<p>Pocket: ${product.pocket}</p>
+<div class="custom-row">
+<span>Pocket</span>
+<p>${product.pocket}</p>
+</div>
 
-<p>Buttons: ${product.buttons}</p>
+<div class="custom-row">
+<span>Buttons</span>
+<p>${product.buttons}</p>
+</div>
 
 </div>
 
 ` : ""}
 
+${product.type === "Bespoke Custom" && product.sizeType === "trouser" ? `
+
+<div class="cart-custom-data">
+
+<div class="custom-row">
+<span>Trouser</span>
+<p>Custom Tailored</p>
+</div>
+
+</div>
+
+` : ""}
 
 <div class="cart-actions">
 
