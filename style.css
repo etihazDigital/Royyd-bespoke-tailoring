@@ -7436,6 +7436,18 @@ text-decoration:none;
         height:220px;
     }
 
+
+
+    .category-overlay h3{
+      font-size:1.5rem !important;
+      font-weight:600;
+      text-align:center;
+      line-height:1.2;
+      letter-spacing:.5px;
+    }
+
+
+
     /* STUDIO */
 
     .studio-section{
@@ -8372,3 +8384,4 @@ body{
 }
 
 }
+
