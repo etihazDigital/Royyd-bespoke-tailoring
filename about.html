@@ -3,182 +3,485 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <title>ROYYD Tailoring</title>
 
-<title>
-About ROYYD
-</title>
+    <!-- GOOGLE FONTS -->
 
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
-rel="stylesheet">
+    <!-- CSS -->
 
-<link rel="stylesheet"
-href="style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
 
 </head>
 
 <body>
 
-<!-- NAVBAR -->
+    <!-- NAVBAR -->
 
-<header class="checkout-navbar">
+    <header class="navbar">
 
-<h2>
-ROYYD
-</h2>
+        <a href="index.html" class="logo-wrapper">
 
-<a href="index.html">
+            <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD Logo">
 
-Back Home
+            <div class="logo-text">
+
+                <h2>ROYYD</h2>
+
+                <span>FINE CUSTOM TAILORING</span>
+
+            </div>
+
+        </a>
+
+        <nav class="desktop-nav">
+
+            <a href="index.html">Home</a>
+
+            <a href="Bespoke.html">Bespoke</a>
+
+            <a href="about.html">About</a>
+
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+        <div class="header-actions">
+
+            <a href="account.html" class="header-icon">
+                <i data-lucide="user"></i>
+            </a>
+
+            <a href="cart.html" class="header-icon cart-btn">
+
+                <i data-lucide="shopping-bag"></i>
+
+                <span id="cartCountBadge">0</span>
+
+            </a>
+
+            <div class="menu-toggle" id="menu-toggle">
+                ☰
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <div class="overlay"></div>
+
+        <div class="hero-content">
+
+            <p class="tagline">
+                EXPERIENCE THE ART OF FINE TAILORING
+            </p>
+
+            <h1>
+                Crafted For <span>Perfect Fit</span> & Timeless Elegance
+            </h1>
+
+            <p class="hero-description">
+
+                Premium custom tailoring for men with luxurious fabrics,
+                precision craftsmanship, and a fit designed exclusively for you.
+
+            </p>
+
+            <div class="hero-buttons">
+
+                <a href="Bespoke.html" class="primary-btn">
+                   Start Bespoke
+                </a>
+
+                <button class="secondary-btn">
+                    Explore Collection
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+             
+
+    <!-- MEASUREMENT STEPS -->
+
+<section class="steps-section">
+
+    <div class="section-title">
+
+        <p>BESPOKE PROCESS</p>
+
+        <h2>
+            Crafted Around Your Measurements
+        </h2>
+
+    </div>
+
+    <div class="steps-grid">
+
+        <div class="step-card">
+
+            <div class="step-number">01</div>
+
+            <h3>Choose Your Fabric</h3>
+
+            <p>
+                Explore luxurious fabrics carefully selected for comfort and elegance.
+            </p>
+
+        </div>
+
+        <div class="step-card">
+
+            <div class="step-number">02</div>
+
+            <h3>Submit Measurements</h3>
+
+            <p>
+                Personalize every detail with your perfect fit and styling preferences.
+            </p>
+
+        </div>
+
+        <div class="step-card">
+
+            <div class="step-number">03</div>
+
+            <h3>Tailored To Perfection</h3>
+
+            <p>
+                Expert craftsmen create a refined garment designed exclusively for you.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+    <!-- FABRIC SECTION -->
+
+<section class="fabric-section">
+
+    <div class="section-title">
+
+        <p>PREMIUM COLLECTION</p>
+
+        <h2>
+            Handpicked Luxury Fabrics
+        </h2>
+
+    </div>
+
+    <div class="fabric-grid">
+
+        <div class="fabric-card">
+
+            <img src="https://i.postimg.cc/8z7k40b1/Luxury-Tweed-Double-Breasted-Suit-Slim-Fit-Elegant-Formal-Wear.jpg" alt="Fabric">
+
+            <div class="fabric-content">
+
+                <h3>Italian Cotton</h3>
+
+                <p>
+                    Soft luxury fabric tailored for timeless elegance.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="fabric-card">
+
+            <img src="https://i.postimg.cc/g2xcsTK0/Mode-fur-Manner.jpg" alt="Fabric">
+
+            <div class="fabric-content">
+
+                <h3>Premium Linen</h3>
+
+                <p>
+                    Breathable handcrafted linen for refined comfort.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="fabric-card">
+
+            <img src="https://i.postimg.cc/rwDyjP9w/Distinguished-menswear.jpg" alt="Fabric">
+
+            <div class="fabric-content">
+
+                <h3>Royal Blends</h3>
+
+                <p>
+                    Rich textures inspired by modern royal tailoring.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- CUSTOMIZATION SECTION -->
+
+<section class="custom-section">
+
+    <div class="section-title">
+
+        <p>TAILOR YOUR STYLE</p>
+
+        <h2>
+            Customize Your Perfect Outfit
+        </h2>
+
+    </div>
+
+    
+        <!-- RIGHT -->
+
+        <div class="preview-card">
+
+            <img src="https://i.postimg.cc/NMPsTZmS/IMG-20260511-164905.jpg" alt="Custom Tailoring">
+
+            <div class="preview-content">
+
+                <h3>Luxury Tailoring Experience</h3>
+
+                <p>
+                    Every outfit is handcrafted with precision,
+                    elegance, and your perfect fit in mind.
+                </p>
+
+                <button class="primary-btn">
+                    Book Consultation
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- WHY CHOOSE US -->
+
+<section class="why-section">
+
+    <div class="section-title">
+
+        <p>WHY ROYYD</p>
+
+        <h2>
+            Tailoring Crafted With Excellence
+        </h2>
+
+    </div>
+
+    <div class="why-grid">
+
+        <div class="why-card">
+
+            <h3>Premium Fabrics</h3>
+
+            <p>
+                Carefully sourced luxury fabrics for unmatched elegance and comfort.
+            </p>
+
+        </div>
+
+        <div class="why-card">
+
+            <h3>Perfect Measurements</h3>
+
+            <p>
+                Every outfit is tailored precisely for your body and personal style.
+            </p>
+
+        </div>
+
+        <div class="why-card">
+
+            <h3>Handcrafted Finish</h3>
+
+            <p>
+                Expert craftsmanship inspired by timeless royal tailoring traditions.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="testimonial-section">
+
+    <div class="section-title">
+
+        <p>CLIENT EXPERIENCE</p>
+
+        <h2>
+            What Our Clients Say
+        </h2>
+
+    </div>
+
+    <div class="testimonial-grid">
+
+        <div class="testimonial-card">
+
+            <p>
+                “Absolutely loved the tailoring quality and premium fitting experience.”
+            </p>
+
+            <h4>- Rajveer Singh</h4>
+
+        </div>
+
+        <div class="testimonial-card">
+
+            <p>
+                “The craftsmanship and luxury finishing exceeded all expectations.”
+            </p>
+
+            <h4>- Harshit Mehta</h4>
+
+        </div>
+
+        <div class="testimonial-card">
+
+            <p>
+                “ROYYD perfectly blends modern elegance with royal tailoring.”
+            </p>
+
+            <h4>- Aman Rathore</h4>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="royyd-footer">
+
+    <div class="footer-top">
+
+        <div class="footer-brand">
+
+            <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD">
+
+            <h2>ROYYD</h2>
+
+            <p>
+                Fine Custom Tailoring crafted for the modern gentleman.
+                Precision. Elegance. Individuality.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Explore</h3>
+
+            <a href="index.html">Home</a>
+            <a href="Bespoke.html">Bespoke</a>
+            <a href="Bespoke.html">Collections</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Customer Care</h3>
+
+            <a href="#">Shipping Policy</a>
+            <a href="#">Returns & Exchanges</a>
+            <a href="#">Size Guide</a>
+            <a href="#">FAQ</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Contact</h3>
+
+            <p>Jaipur, Rajasthan</p>
+
+            <p>royyd29@gmail.com</p>
+
+            <p>+91 76888 88825</p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-newsletter">
+
+        <h3>Join The ROYYD Circle</h3>
+
+        <p>
+            Receive tailoring insights, new collections,
+            and exclusive consultations.
+        </p>
+
+        <div class="newsletter-box">
+
+            <input type="email"
+                   placeholder="Enter your email">
+
+            <button>Subscribe</button>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 ROYYD. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+<a href="https://wa.me/917688888825"
+class="whatsapp-float"
+target="_blank">
+
+<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
+alt="WhatsApp">
 
 </a>
+    <!-- JS -->
 
-</header>
+    <script src="script.js"></script>
 
-<!-- HERO -->
-
-<section class="about-hero">
-
-<div class="about-overlay"></div>
-
-<div class="about-content">
-
-<p class="about-tag">
-
-THE ROYYD STORY
-
-</p>
-
-<h1>
-
-Crafted For The
-Modern Royalty
-
-</h1>
-
-<p>
-
-ROYYD was born from the belief that tailoring
-is more than clothing — it is identity,
-confidence, and timeless elegance.
-
-</p>
-
-</div>
-
-</section>
-
-<!-- STORY -->
-
-<section class="about-story">
-
-<div class="story-left">
-
-<h2>
-
-Tailoring Beyond Fashion
-
-</h2>
-
-<p>
-
-At ROYYD, every garment is designed with
-precision craftsmanship, luxurious fabrics,
-and a modern royal aesthetic.
-
-We combine bespoke tailoring traditions
-with contemporary silhouettes to create
-pieces that feel powerful, refined,
-and deeply personal.
-
-</p>
-
-</div>
-
-<div class="story-right">
-
-<img src="https://i.postimg.cc/029TLv7z/web-tailor-sufi-5.jpg">
-
-</div>
-
-</section>
-
-<!-- VALUES -->
-
-<section class="about-values">
-
-<div class="value-card">
-
-<h3>
-Craftsmanship
-</h3>
-
-<p>
-
-Every detail matters.
-
-</p>
-
-</div>
-
-<div class="value-card">
-
-<h3>
-Luxury
-</h3>
-
-<p>
-
-Minimal elegance with premium identity.
-
-</p>
-
-</div>
-
-<div class="value-card">
-
-<h3>
-Personal Tailoring
-</h3>
-
-<p>
-
-Every fit is uniquely yours.
-
-</p>
-
-</div>
-
-</section>
-
-<!-- FINAL -->
-
-<section class="about-final">
-
-<h2>
-
-Experience Tailoring Reimagined
-
-</h2>
-
-<a href="Bespoke.html"
-class="success-btn">
-
-Explore Collections
-
-</a>
-
-</section>
+    <script>
+lucide.createIcons();
+</script>
 
 </body>
 

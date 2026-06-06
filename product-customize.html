@@ -17,23 +17,59 @@
 
     <link rel="stylesheet" href="style.css">
 
+    <script src="https://unpkg.com/lucide@latest"></script>
+
 </head>
 
 <body>
 
     <!-- TOP BAR -->
 
-    <header class="config-navbar">
+    <header class="navbar">
 
-        <a href="Bespoke.html" class="back-btn">
-            ← Back
+        <a href="index.html" class="logo-wrapper">
+
+            <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD Logo">
+
+            <div class="logo-text">
+
+                <h2>ROYYD</h2>
+
+                <span>FINE CUSTOM TAILORING</span>
+
+            </div>
+
         </a>
 
-        <div class="config-logo">
+        <nav class="desktop-nav">
 
-            <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg">
+            <a href="index.html">Home</a>
 
-            <span>ROYYD</span>
+            <a href="Bespoke.html">Bespoke</a>
+
+            <a href="about.html">About</a>
+
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+        <div class="header-actions">
+
+            <a href="account.html" class="header-icon">
+                <i data-lucide="user"></i>
+            </a>
+
+            <a href="cart.html" class="header-icon cart-btn">
+
+                <i data-lucide="shopping-bag"></i>
+
+                <span id="cartCountBadge">0</span>
+
+            </a>
+
+            <div class="menu-toggle" id="menu-toggle">
+                ☰
+            </div>
 
         </div>
 
@@ -44,7 +80,7 @@
     <section class="configurator">
 
 
-        </div>
+
 
         <!-- PRODUCT IMAGE -->
 
@@ -80,6 +116,50 @@
 
             <p id="productPrice"></p>
 
+            <div class="fabric-details-card">
+
+                <span class="fabric-label">
+                    FABRIC DETAILS
+                </span>
+
+                
+
+                <div class="fabric-info-card">
+
+                    <div class="fabric-icon">✦</div>
+
+                    <div>
+                        <span>Fabric</span>
+                        <h4 id="fabricName"></h4>
+                    </div>
+
+                </div>
+
+                <div class="fabric-info-card">
+
+                    <div class="fabric-icon">⚖</div>
+
+                    <div>
+                        <span>Weight</span>
+                        <h4 id="fabricWeight"></h4>
+                    </div>
+
+                </div>
+
+                <div class="fabric-info-card">
+
+                    <div class="fabric-icon">⌖</div>
+
+                    <div>
+                        <span>Origin</span>
+                        <h4 id="fabricOrigin"></h4>
+                    </div>
+
+                </div>
+
+                <p id="fabricDescription"></p>
+
+            </div>
             <!-- COLOR -->
 
             <div class="config-section">
@@ -88,15 +168,32 @@
 
                 <div class="color-options">
 
-                    <span class="color active-color"></span>
-                    <span class="color"></span>
-                    <span class="color"></span>
+                    <span class="color black active-color"></span>
+                    <span class="color beige"></span>
+                    <span class="color white"></span>
+                    <span class="color navy"></span>
 
                 </div>
 
             </div>
 
+            <div class="config-section">
 
+                <h3>Choose Size</h3>
+
+                <div class="size-options">
+
+                    <button class="size-btn">S</button>
+
+                    <button class="size-btn">M</button>
+
+                    <button class="size-btn">L</button>
+
+                    <button class="size-btn">XL</button>
+
+                </div>
+
+            </div>
 
             <!-- CUSTOM -->
 
@@ -120,441 +217,784 @@
 
                 </a>
 
+                <button id="openCustomizer" class="primary-cta">
+                    Customize Design
+                </button>
+
             </div>
 
+            <button id="customCartBtn" class="main-cart-btn">
+
+                Add To Cart
+
+            </button>
+
+
+            <div class="accordion">
+
+                <div class="accordion-item">
+
+                    <button class="accordion-header">
+                        Product Details
+                        <span>+</span>
+                    </button>
+
+                    <div class="accordion-content">
+
+                        <p>100% Premium Cotton Fabric</p>
+                        <p>Handcrafted Tailoring Finish</p>
+                        <p>Breathable Luxury Construction</p>
+                        <p>Premium Imported Buttons</p>
+                        <p>Made In India</p>
+
+                    </div>
+
+                </div>
+
+                <div class="accordion-item">
+
+                    <button class="accordion-header">
+                        Delivery & Returns
+                        <span>+</span>
+                    </button>
+
+                    <div class="accordion-content">
+
+                        <p>Ready To Wear: 5-7 Business Days</p>
+                        <p>Bespoke Orders: 2-3 Weeks</p>
+                        <p>Easy Return Policy Available</p>
+
+                    </div>
+
+                </div>
+
+                <div class="accordion-item">
+
+                    <button class="accordion-header">
+                        Care Instructions
+                        <span>+</span>
+                    </button>
+
+                    <div class="accordion-content">
+
+                        <p>Dry Clean Recommended</p>
+                        <p>Store On Hanger After Use</p>
+                        <p>Avoid Direct Sunlight For Long Periods</p>
+
+                    </div>
+
+                </div>
+
+            </div>
         </div>
 
     </section>
 
     <!-- CUSTOMIZATION FLOW -->
 
-    <section class="design-flow" id="designFlow">
-
-        <div class="flow-header">
-
-            <h2 id="customizationTitle">
-                Customize Your Shirt
-            </h2>
-
-        </div>
 
 
 
-        <!-- COLLAR -->
+    <div class="customizer-drawer" id="customizerDrawer">
 
-        <div class="flow-box reveal" id="collarSection">
+        <div class="drawer-header">
 
-            <div class="flow-top">
+            <h2>Customize Design</h2>
 
-                <h3>Collar Style</h3>
-
-                <span>+</span>
-
-            </div>
-
-            <div class="flow-content">
-
-                <div class="style-card" data-preview="IMAGE-1" data-type="collar" data-name="Spread Collar">
-                    <img src="https://i.postimg.cc/FHB5GP4f/IMG-20260513-144447.png">
-
-                    <p>Spread Collar</p>
-
-                </div>
-
-                <div class="style-card" data-preview="IMAGE-1" data-type="collar" data-name="Mandarin Collar">
-                    <img src="https://i.postimg.cc/JznCbf9y/IMG-20260513-144506.png">
-
-                    <p>Mandarin Collar</p>
-
-                </div>
-
-                <div class="style-card" data-preview="IMAGE-1" data-type="collar" data-name="Classic Collar">
-
-
-                    <img src="https://i.postimg.cc/rwm2SBvy/IMG-20260513-144534.png">
-
-                    <p>Classic Collar</p>
-
-                </div>
-
-            </div>
+            <button id="closeCustomizer">✕</button>
 
         </div>
 
-        <!-- CUFF -->
+        <div class="drawer-content">
 
-        <div class="flow-box reveal" id="cuffSection">
+            <section class="design-flow" id="designFlow">
 
-            <div class="flow-top">
+                <div class="flow-header">
 
-                <h3>Cuff Style</h3>
+                    <h2 id="customizationTitle">
+                        Customize Your Shirt
+                    </h2>
 
-                <span>+</span>
+                </div>
+
+
+
+                <!-- COLLAR -->
+
+                <div class="flow-box reveal" id="collarSection">
+
+                    <div class="flow-top">
+
+                        <h3>Collar Style</h3>
+
+                        <span>+</span>
+
+                    </div>
+
+                    <div class="flow-content">
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="collar" data-name="Spread Collar">
+                            <img src="https://i.postimg.cc/FHB5GP4f/IMG-20260513-144447.png">
+
+                            <p>Spread Collar</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="collar" data-name="Mandarin Collar">
+                            <img src="https://i.postimg.cc/JznCbf9y/IMG-20260513-144506.png">
+
+                            <p>Mandarin Collar</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="collar" data-name="Classic Collar">
+
+
+                            <img src="https://i.postimg.cc/rwm2SBvy/IMG-20260513-144534.png">
+
+                            <p>Classic Collar</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- CUFF -->
+
+                <div class="flow-box reveal" id="cuffSection">
+
+                    <div class="flow-top">
+
+                        <h3>Cuff Style</h3>
+
+                        <span>+</span>
+
+                    </div>
+
+                    <div class="flow-content">
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="cuff" data-name="Rounded Cuff">
+
+                            <img src="https://i.postimg.cc/vHGsmghW/IMG-20260513-144644.png">
+
+                            <p>Rounded Cuff</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="cuff" data-name="Square Cuff">
+
+
+                            <img src="https://i.postimg.cc/4xdRzDrk/IMG-20260513-144600.png">
+
+                            <p>Square Cuff</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="cuff" data-name="French Cuff">
+
+
+                            <img src="https://i.postimg.cc/2y7Nwrky/IMG-20260513-144819.png">
+
+                            <p>French Cuff</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- SLEEVE -->
+
+                <div class="flow-box reveal" id="sleeveSection">
+
+
+                    <div class="flow-top">
+
+                        <h3>Sleeve Style</h3>
+
+                        <span>+</span>
+
+                    </div>
+
+                    <div class="flow-content">
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="sleeve" data-name="Full Sleeve">
+
+                            <img src="https://i.postimg.cc/4xdRzDrk/IMG-20260513-144600.png">
+
+                            <p>Full Sleeve</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="sleeve" data-name="Folded Sleeve">
+
+                            <img src="https://i.postimg.cc/05YvxdYq/IMG-20260513-144724.png">
+
+                            <p>Folded Sleeve</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="sleeve" data-name="Short Sleeve">
+
+                            <img src="https://i.postimg.cc/ZnShpChc/IMG-20260513-144835.png">
+
+                            <p>Short Sleeve</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- POCKET -->
+
+                <div class="flow-box reveal" id="pocketSection">
+
+                    <div class="flow-top">
+
+                        <h3>Pocket Style</h3>
+
+                        <span>+</span>
+
+                    </div>
+
+                    <div class="flow-content">
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="pocket" data-name="No Pocket">
+
+                            <img src="https://i.postimg.cc/C5spNSFW/1778664171579.png">
+
+                            <p>No Pocket</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-2" data-type="pocket" data-name="Classic Pocket">
+
+                            <img src="https://i.postimg.cc/Hx5grbFW/IMG-20260513-144918.png">
+
+                            <p>Classic</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-3" data-type="pocket" data-name="Double Pocket">
+
+                            <img src="https://i.postimg.cc/MHmJDq6p/1778664288992.png">
+
+                            <p>Double</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PLEAT -->
+
+                <div class="flow-box reveal" id="pleatSection">
+
+                    <div class="flow-top">
+
+                        <h3>Pleat Style</h3>
+
+                        <span>+</span>
+
+                    </div>
+
+                    <div class="flow-content">
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="pleat" data-name="Flat Front">
+                            <img src="https://i.postimg.cc/FHB5GP4f/IMG-20260513-144447.png">
+
+                            <p>Flat Front</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="pleat" data-name="Single Pleat">
+                            <img src="https://i.postimg.cc/JznCbf9y/IMG-20260513-144506.png">
+
+                            <p>Single Pleat</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="pleat" data-name="Double Pleat">
+
+
+                            <img src="https://i.postimg.cc/rwm2SBvy/IMG-20260513-144534.png">
+
+                            <p>Double Pleat</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- WAIST -->
+
+                <div class="flow-box reveal" id="waistSection">
+
+                    <div class="flow-top">
+
+                        <h3>Waist Style</h3>
+
+                        <span>+</span>
+
+                    </div>
+
+                    <div class="flow-content">
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="Waist" data-name="Standard Waist">
+                            <img src="https://i.postimg.cc/FHB5GP4f/IMG-20260513-144447.png">
+
+                            <p>Standard Waist</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="Waist" data-name="Extended Tab">
+                            <img src="https://i.postimg.cc/JznCbf9y/IMG-20260513-144506.png">
+
+                            <p>Extended Tab</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="Waist" data-name="Side Adjusters">
+
+
+                            <img src="https://i.postimg.cc/rwm2SBvy/IMG-20260513-144534.png">
+
+                            <p>Side Adjusters</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BOTTOM -->
+
+                <div class="flow-box reveal" id="bottomSection">
+
+                    <div class="flow-top">
+
+                        <h3>Bottom Finish</h3>
+
+                        <span>+</span>
+
+                    </div>
+
+                    <div class="flow-content">
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="bottom" data-name="Plain Hem">
+                            <img src="https://i.postimg.cc/FHB5GP4f/IMG-20260513-144447.png">
+
+                            <p>Plain Hem</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="bottom" data-name="Turn Up Cuff">
+                            <img src="https://i.postimg.cc/JznCbf9y/IMG-20260513-144506.png">
+
+                            <p>Turn Up Cuff</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="bottom" data-name="Tapered Finish">
+
+
+                            <img src="https://i.postimg.cc/rwm2SBvy/IMG-20260513-144534.png">
+
+                            <p>Tapered Finish</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <!-- BUTTONS -->
+
+                <div class="flow-box" id="buttonSection">
+
+                    <div class="flow-top">
+
+                        <h3>Button Style</h3>
+
+                        <span>+</span>
+
+                    </div>
+
+                    <div class="flow-content">
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="button" data-name="Classic White">
+
+                            <img src="https://i.postimg.cc/251mfswM/IMG-20260513-150121.png">
+
+                            <p>Classic</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-2" data-type="button" data-name="Pearl White">
+
+                            <img src="https://i.postimg.cc/GpK3cPwT/IMG-20260513-150230.png">
+
+                            <p>Pearl</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-3" data-type="button" data-name="Matte Black">
+
+                            <img src="https://i.postimg.cc/MGVRtFQ0/IMG-20260513-150433.png">
+
+                            <p>Matte</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- LAPEL -->
+
+                <div class="flow-box reveal" id="lapelSection">
+
+                    <div class="flow-top">
+
+                        <h3>Lapel Style</h3>
+
+                        <span>+</span>
+
+                    </div>
+
+                    <div class="flow-content">
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="lapel" data-name="Notch Lapel">
+
+                            <img src="https://i.postimg.cc/FHB5GP4f/IMG-20260513-144447.png">
+
+                            <p>Notch Lapel</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="lapel" data-name="Peak Lapel">
+
+                            <img src="https://i.postimg.cc/JznCbf9y/IMG-20260513-144506.png">
+
+                            <p>Peak Lapel</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="lapel" data-name="Shawl Lapel">
+
+                            <img src="https://i.postimg.cc/rwm2SBvy/IMG-20260513-144534.png">
+
+                            <p>Shawl Lapel</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- BUTTON CONFIGURATION -->
+
+                <div class="flow-box reveal" id="configurationSection">
+
+                    <div class="flow-top">
+
+                        <h3>Button Configuration</h3>
+
+                        <span>+</span>
+
+                    </div>
+
+                    <div class="flow-content">
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="configuration"
+                            data-name="Single Button">
+
+                            <img src="https://i.postimg.cc/FHB5GP4f/IMG-20260513-144447.png">
+
+                            <p>Single Button</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="configuration" data-name="Two Button">
+
+                            <img src="https://i.postimg.cc/JznCbf9y/IMG-20260513-144506.png">
+
+                            <p>Two Button</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="configuration"
+                            data-name="Double Breasted">
+
+                            <img src="https://i.postimg.cc/rwm2SBvy/IMG-20260513-144534.png">
+
+                            <p>Double Breasted</p>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- VENT STYLE -->
+
+                <div class="flow-box reveal" id="ventSection">
+
+                    <div class="flow-top">
+
+                        <h3>Vent Style</h3>
+
+                        <span>+</span>
+
+                    </div>
+
+                    <div class="flow-content">
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="vent" data-name="No Vent">
+
+                            <img src="https://i.postimg.cc/FHB5GP4f/IMG-20260513-144447.png">
+
+                            <p>No Vent</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="vent" data-name="Single Vent">
+
+                            <img src="https://i.postimg.cc/JznCbf9y/IMG-20260513-144506.png">
+
+                            <p>Single Vent</p>
+
+                        </div>
+
+                        <div class="style-card" data-preview="IMAGE-1" data-type="vent" data-name="Double Vent">
+
+                            <img src="https://i.postimg.cc/rwm2SBvy/IMG-20260513-144534.png">
+
+                            <p>Double Vent</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="custom-cart-area">
+
+                    <button id="saveDesignBtn">
+                        Apply Customizations
+                    </button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </div>
+
+    <section class="crafted-excellence">
+
+        <span>
+            THE ROYYD STANDARD
+        </span>
+
+        <h2>
+            Crafted For Excellence
+        </h2>
+
+        <div class="craft-grid">
+
+            <div class="craft-card">
+
+                <div class="craft-icon">✦</div>
+
+                <h3>
+                    Premium Fabrics
+                </h3>
+
+                <p>
+                    Carefully sourced materials selected for comfort, durability and elegance.
+                </p>
 
             </div>
 
-            <div class="flow-content">
+            <div class="craft-card">
 
-                <div class="style-card" data-preview="IMAGE-1" data-type="cuff" data-name="Rounded Cuff">
+                <div class="craft-icon">✦</div>
 
-                    <img src="https://i.postimg.cc/vHGsmghW/IMG-20260513-144644.png">
+                <h3>
+                    Precision Tailoring
+                </h3>
 
-                    <p>Rounded Cuff</p>
+                <p>
+                    Every garment is refined with expert craftsmanship and attention to detail.
+                </p>
 
-                </div>
+            </div>
 
-                <div class="style-card" data-preview="IMAGE-1" data-type="cuff" data-name="Square Cuff">
+            <div class="craft-card">
 
+                <div class="craft-icon">✦</div>
 
-                    <img src="https://i.postimg.cc/4xdRzDrk/IMG-20260513-144600.png">
+                <h3>
+                    Perfect Fit
+                </h3>
 
-                    <p>Square Cuff</p>
+                <p>
+                    Designed around your measurements for a silhouette that feels uniquely yours.
+                </p>
 
-                </div>
+            </div>
 
-                <div class="style-card" data-preview="IMAGE-1" data-type="cuff" data-name="French Cuff">
+            <div class="craft-card">
 
+                <div class="craft-icon">✦</div>
 
-                    <img src="https://i.postimg.cc/2y7Nwrky/IMG-20260513-144819.png">
+                <h3>
+                    Made To Last
+                </h3>
 
-                    <p>French Cuff</p>
-
-                </div>
+                <p>
+                    Timeless construction techniques ensure long-term wear and enduring quality.
+                </p>
 
             </div>
 
         </div>
 
-        <!-- SLEEVE -->
+    </section>
 
-        <div class="flow-box reveal" id="sleeveSection">
+    <section class="complete-look">
 
+        <h2>
+            Complete The Look
+        </h2>
 
-            <div class="flow-top">
+        <p class="look-subtitle">
+            Curated pairings selected by ROYYD stylists.
+        </p>
 
-                <h3>Sleeve Style</h3>
-
-                <span>+</span>
-
-            </div>
-
-            <div class="flow-content">
-
-                <div class="style-card" data-preview="IMAGE-1" data-type="sleeve" data-name="Full Sleeve">
-
-                    <img src="https://i.postimg.cc/4xdRzDrk/IMG-20260513-144600.png">
-
-                    <p>Full Sleeve</p>
-
-                </div>
-
-                <div class="style-card" data-preview="IMAGE-1" data-type="sleeve" data-name="Folded Sleeve">
-
-                    <img src="https://i.postimg.cc/05YvxdYq/IMG-20260513-144724.png">
-
-                    <p>Folded Sleeve</p>
-
-                </div>
-
-                <div class="style-card" data-preview="IMAGE-1" data-type="sleeve" data-name="Short Sleeve">
-
-                    <img src="https://i.postimg.cc/ZnShpChc/IMG-20260513-144835.png">
-
-                    <p>Short Sleeve</p>
-
-                </div>
-
-            </div>
+        <div class="look-slider" id="completeLookSlider">
 
         </div>
-
-
-        <!-- POCKET -->
-
-        <div class="flow-box reveal" id="pocketSection">
-
-            <div class="flow-top">
-
-                <h3>Pocket Style</h3>
-
-                <span>+</span>
-
-            </div>
-
-            <div class="flow-content">
-
-                <div class="style-card" data-preview="IMAGE-1" data-type="pocket" data-name="No Pocket">
-
-                    <img src="https://i.postimg.cc/C5spNSFW/1778664171579.png">
-
-                    <p>No Pocket</p>
-
-                </div>
-
-                <div class="style-card" data-preview="IMAGE-2" data-type="pocket" data-name="Classic Pocket">
-
-                    <img src="https://i.postimg.cc/Hx5grbFW/IMG-20260513-144918.png">
-
-                    <p>Classic</p>
-
-                </div>
-
-                <div class="style-card" data-preview="IMAGE-3" data-type="pocket" data-name="Double Pocket">
-
-                    <img src="https://i.postimg.cc/MHmJDq6p/1778664288992.png">
-
-                    <p>Double</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- BUTTONS -->
-
-        <div class="flow-box" id="buttonSection">
-
-            <div class="flow-top">
-
-                <h3>Button Style</h3>
-
-                <span>+</span>
-
-            </div>
-
-            <div class="flow-content">
-
-                <div class="style-card" data-preview="IMAGE-1" data-type="button" data-name="Classic White">
-
-                    <img src="https://i.postimg.cc/251mfswM/IMG-20260513-150121.png">
-
-                    <p>Classic</p>
-
-                </div>
-
-                <div class="style-card" data-preview="IMAGE-2" data-type="button" data-name="Pearl White">
-
-                    <img src="https://i.postimg.cc/GpK3cPwT/IMG-20260513-150230.png">
-
-                    <p>Pearl</p>
-
-                </div>
-
-                <div class="style-card" data-preview="IMAGE-3" data-type="button" data-name="Matte Black">
-
-                    <img src="https://i.postimg.cc/MGVRtFQ0/IMG-20260513-150433.png">
-
-                    <p>Matte</p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-
 
     </section>
 
 
+    <section class="royyd-promise">
 
+        <div class="promise-image">
 
+            <img src="https://i.postimg.cc/htbR93Vf/62f8261d2b79421c4bc885dd0a307fec.jpg">
 
-    <!-- BESPOKE SUMMARY -->
+        </div>
 
-    <section class="final-cta reveal">
+        <div class="promise-content">
 
-        <div class="cta-box">
+            <span>THE ROYYD PROMISE</span>
 
             <h2>
-                Bespoke Summary
+                Tailoring That Reflects Your Identity
             </h2>
 
             <p>
-                Review your personalized tailoring selections before proceeding.
+                Every ROYYD garment is crafted with precision, premium materials,
+                and attention to detail. We don't simply create clothing—we create
+                pieces that become part of your personal legacy.
             </p>
 
-            <div class="live-summary">
+            <div class="promise-points">
 
-                <div class="summary-row" id="collarSummary">
+                <div>✓ Personalized Fit Experience</div>
 
-                    <span>Collar</span>
+                <div>✓ Premium Hand-Selected Fabrics</div>
 
-                    <p id="collarResult">
-                        —
-                    </p>
+                <div>✓ Luxury Craftsmanship Standards</div>
 
-                </div>
-
-                <div class="summary-row" id="cuffSummary">
-
-                    <span>Cuff</span>
-
-                    <p id="cuffResult">
-                        —
-                    </p>
-
-                </div>
-
-                <div class="summary-row" id="sleeveSummary">
-
-                    <span>Sleeve</span>
-
-                    <p id="sleeveResult">
-                        —
-                    </p>
-
-                </div>
-
-
-
-                <div class="summary-row" id="pocketSummary">
-
-                    <span>Pocket</span>
-
-                    <p id="pocketResult">
-                        —
-                    </p>
-
-                </div>
-
-                <div class="summary-row" id="buttonSummary">
-
-                    <span>Buttons</span>
-
-                    <p id="buttonResult">
-                        —
-                    </p>
-
-                </div>
-
-                <div class="summary-row" id="fitSummary">
-
-                    <span>Fit</span>
-
-                    <p id="fitResult">
-                        —
-                    </p>
-
-                </div>
-
-
-                <div class="summary-row" id="upperBodySummary">
-
-                    <span>Upper Body</span>
-
-                    <p id="upperBodyResult">
-                        —
-                    </p>
-
-                </div>
-
-                <div class="summary-row">
-
-                    <span>Hip Shape</span>
-
-                    <p id="hipShapeResult">
-                        —
-                    </p>
-
-                </div>
-
-                <div class="summary-row">
-
-                    <span>Height</span>
-
-                    <p id="heightResult">
-                        —
-                    </p>
-
-                </div>
-
-                <div class="summary-row" id="shirtSizeSummary">
-
-                    <span>Shirt Size</span>
-
-                    <p id="shirtSizeResult">
-                        —
-                    </p>
-
-                </div>
-
-                <div class="summary-row" id="trouserWaistSummary">
-
-                    <span>Trouser Waist</span>
-
-                    <p id="trouserWaistResult">
-                        —
-                    </p>
-
-                </div>
-
-                <div class="summary-row" id="trouserLengthSummary">
-
-                    <span>Trouser Length</span>
-
-                    <p id="trouserLengthResult">
-                        —
-                    </p>
-
-                </div>
-
-                <div class="summary-row" id="hipFitSummary">
-
-                    <span>Hip Fit</span>
-
-                    <p id="hipFitResult">
-                        —
-                    </p>
-
-                </div>
-
-                <div class="summary-row" id="thighFitSummary">
-
-                    <span>Thigh Fit</span>
-
-                    <p id="thighFitResult">
-                        —
-                    </p>
-
-                </div>
-
-                <div class="summary-row" id="shoulderSummary">
-
-                    <span>Shoulder</span>
-
-                    <p id="shoulderResult">
-                        —
-                    </p>
-
-                </div>
+                <div>✓ Dedicated Style Consultation</div>
 
             </div>
 
-            <div class="cta-price">
+        </div>
 
-                Estimated Price:
-                <span id="summaryPrice">
-                    ₹ 3,490
-                </span>
+    </section>
+
+    <section class="you-may-like">
+
+        <h2>You May Also Like</h2>
+
+        <div class="look-slider" id="youMayLikeSlider">
+
+        </div>
+
+    </section>
+
+    <section class="journey-section">
+
+        <span>THE ROYYD EXPERIENCE</span>
+
+        <h2>From Selection To Delivery</h2>
+
+        <div class="journey-grid">
+
+            <div class="journey-card">
+
+                <div class="journey-number">01</div>
+
+                <h3>Select Your Garment</h3>
+
+                <p>
+                    Choose your preferred style, fabric and customization options.
+                </p>
 
             </div>
-            <div class="cta-buttons">
 
-                <a id="sizeGuideBtn2" class="primary-cta">
+            <div class="journey-card">
 
-                    Find My Size
+                <div class="journey-number">02</div>
 
-                </a>
+                <h3>Personal Measurements</h3>
 
-                <button class="secondary-cta" id="customCartBtn">
+                <p>
+                    Submit measurements or use our guided sizing system.
+                </p>
 
-                    Add To Bag
+            </div>
 
-                </button>
+            <div class="journey-card">
+
+                <div class="journey-number">03</div>
+
+                <h3>Crafted By Experts</h3>
+
+                <p>
+                    Our tailoring team carefully constructs your garment.
+                </p>
+
+            </div>
+
+            <div class="journey-card">
+
+                <div class="journey-number">04</div>
+
+                <h3>Delivered To You</h3>
+
+                <p>
+                    Receive a garment crafted specifically for your requirements.
+                </p>
+
             </div>
 
         </div>
@@ -562,10 +1002,228 @@
     </section>
 
 
+    <section class="product-faq">
 
+        <span>FREQUENTLY ASKED QUESTIONS</span>
+
+        <h2>Everything You Need To Know</h2>
+
+        <div class="faq-container">
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    How long does a bespoke order take?
+
+                    <span>+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    Bespoke garments are typically delivered within 2–3 weeks depending on customization requirements.
+
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    How do I provide measurements?
+
+                    <span>+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    You can use our guided measurement system or request assistance from our tailoring specialists.
+
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    Can I customize every garment?
+
+                    <span>+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    Yes. Fabric, fit, collar, cuffs, pockets and many other details can be personalized.
+
+                </div>
+
+            </div>
+
+            <div class="faq-item">
+
+                <button class="faq-question">
+
+                    Do you ship internationally?
+
+                    <span>+</span>
+
+                </button>
+
+                <div class="faq-answer">
+
+                    Yes, ROYYD ships globally with secure packaging and tracking.
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="product-cta">
+
+        <div class="product-cta-overlay"></div>
+
+        <div class="product-cta-content">
+
+            <span>PERSONAL CONSULTATION</span>
+
+            <h2>
+                Ready To Create Something
+                Exclusively Yours?
+            </h2>
+
+            <p>
+                Speak directly with our tailoring specialists and begin your bespoke journey with ROYYD.
+            </p>
+
+            <div class="product-cta-buttons">
+
+                <a href="https://wa.me/917688888825" class="cta-primary">
+
+                    WhatsApp Us
+
+                </a>
+
+                <a href="contact.html" class="cta-secondary">
+
+                    Book Consultation
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <footer class="royyd-footer">
+
+    <div class="footer-top">
+
+        <div class="footer-brand">
+
+            <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD">
+
+            <h2>ROYYD</h2>
+
+            <p>
+                Fine Custom Tailoring crafted for the modern gentleman.
+                Precision. Elegance. Individuality.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Explore</h3>
+
+            <a href="index.html">Home</a>
+            <a href="Bespoke.html">Bespoke</a>
+            <a href="Bespoke.html">Collections</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Customer Care</h3>
+
+            <a href="#">Shipping Policy</a>
+            <a href="#">Returns & Exchanges</a>
+            <a href="#">Size Guide</a>
+            <a href="#">FAQ</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Contact</h3>
+
+            <p>Jaipur, Rajasthan</p>
+
+            <p>royyd29@gmail.com</p>
+
+            <p>+91 76888 88825</p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-newsletter">
+
+        <h3>Join The ROYYD Circle</h3>
+
+        <p>
+            Receive tailoring insights, new collections,
+            and exclusive consultations.
+        </p>
+
+        <div class="newsletter-box">
+
+            <input type="email"
+                   placeholder="Enter your email">
+
+            <button>Subscribe</button>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 ROYYD. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+    <script>document.addEventListener("DOMContentLoaded", () => {
+
+            console.log(localStorage.getItem("productTitle"));
+
+            console.log(localStorage.getItem("productCategory"));
+
+            console.log(localStorage.getItem("productSizeType"));
+
+            console.log(localStorage.getItem("productImage"));
+
+        });</script>
 
 
     <script src="./script.js"></script>
+
+    <script>
+lucide.createIcons();
+</script>
 
 </body>
 

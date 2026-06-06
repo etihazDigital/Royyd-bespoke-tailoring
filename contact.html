@@ -18,6 +18,7 @@
     <!-- CSS -->
 
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
 
 </head>
 
@@ -27,77 +28,53 @@
 
     <header class="navbar">
 
-    <div class="logo-wrapper">
+        <a href="index.html" class="logo-wrapper">
 
-        <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD Logo">
+            <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD Logo">
 
-        <div class="logo-text">
+            <div class="logo-text">
 
-            <h2>ROYYD</h2>
+                <h2>ROYYD</h2>
 
-            <span>
-                FINE CUSTOM TAILORING
-            </span>
+                <span>FINE CUSTOM TAILORING</span>
+
+            </div>
+
+        </a>
+
+        <nav class="desktop-nav">
+
+            <a href="index.html">Home</a>
+
+            <a href="Bespoke.html">Bespoke</a>
+
+            <a href="about.html">About</a>
+
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+        <div class="header-actions">
+
+            <a href="account.html" class="header-icon">
+                <i data-lucide="user"></i>
+            </a>
+
+            <a href="cart.html" class="header-icon cart-btn">
+
+                <i data-lucide="shopping-bag"></i>
+
+                <span id="cartCountBadge">0</span>
+
+            </a>
+
+            <div class="menu-toggle" id="menu-toggle">
+                ☰
+            </div>
 
         </div>
 
-    </div>
-
-    <div class="menu-toggle" id="menu-toggle">
-        ☰
-    </div>
-
-    <nav id="nav-menu">
-
-        <ul class="nav-links">
-
-            <li>
-<a href="index.html">
-Home
-</a>
-</li>
-
-<li>
-<a href="Bespoke.html">
-Bespoke
-</a>
-</li>
-
-<li>
-<a href="about.html">
-About
-</a>
-</li>
-
-<li>
-<a href="contact.html">
-Contact
-</a>
-</li>
-
-<li>
-<a href="login.html"
-id="accountNavLink">
-
-Login
-
-</a>
-</li>
-
-<li>
-<a href="cart.html"
-id="cartNavCount">
-
-Cart
-
-</a>
-</li>
-
-        </ul>
-
-    </nav>
-
-</header>
+    </header>
 
     <!-- HERO SECTION -->
 
@@ -168,23 +145,91 @@ Cart
 
 <!-- FOOTER -->
 
-<footer class="footer">
 
-    <h2>ROYYD</h2>
+<footer class="royyd-footer">
 
-    <p>
-        Fine Custom Tailoring For Modern Gentlemen.
-    </p>
+    <div class="footer-top">
 
-    <div class="footer-links">
+        <div class="footer-brand">
 
-        <a href="#">Instagram</a>
-        <a href="#">Contact</a>
-        <a href="#">Collections</a>
+            <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD">
+
+            <h2>ROYYD</h2>
+
+            <p>
+                Fine Custom Tailoring crafted for the modern gentleman.
+                Precision. Elegance. Individuality.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Explore</h3>
+
+            <a href="index.html">Home</a>
+            <a href="Bespoke.html">Bespoke</a>
+            <a href="Bespoke.html">Collections</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Customer Care</h3>
+
+            <a href="#">Shipping Policy</a>
+            <a href="#">Returns & Exchanges</a>
+            <a href="#">Size Guide</a>
+            <a href="#">FAQ</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Contact</h3>
+
+            <p>Jaipur, Rajasthan</p>
+
+            <p>royyd29@gmail.com</p>
+
+            <p>+91 76888 88825</p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-newsletter">
+
+        <h3>Join The ROYYD Circle</h3>
+
+        <p>
+            Receive tailoring insights, new collections,
+            and exclusive consultations.
+        </p>
+
+        <div class="newsletter-box">
+
+            <input type="email"
+                   placeholder="Enter your email">
+
+            <button>Subscribe</button>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 ROYYD. All Rights Reserved.
+        </p>
 
     </div>
 
 </footer>
+
+
 <a href="https://wa.me/917688888825"
 class="whatsapp-float"
 target="_blank">
@@ -196,6 +241,9 @@ alt="WhatsApp">
     <!-- JS -->
 
     <script src="script.js"></script>
+    <script>
+lucide.createIcons();
+</script>
 
 </body>
 

@@ -3,205 +3,332 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>
-ROYYD Account
-</title>
+    <title>
+        ROYYD Account
+    </title>
 
-<link rel="preconnect"
-href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link rel="preconnect"
-href="https://fonts.gstatic.com"
-crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
-rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
-<link rel="stylesheet"
-href="style.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+
 
 </head>
+<script>
+    lucide.createIcons();
+</script>
 
 <body>
 
-<section class="account-page">
+    <header class="navbar">
 
-<!-- SIDEBAR -->
+        <a href="index.html" class="logo-wrapper">
 
-<div class="account-sidebar">
+            <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD Logo">
 
-<h2>
-ROYYD
-</h2>
+            <div class="logo-text">
 
-<ul>
+                <h2>ROYYD</h2>
 
-<li class="active-account"
-data-section="dashboardSection">
+                <span>FINE CUSTOM TAILORING</span>
 
-Dashboard
+            </div>
 
-</li>
+        </a>
 
-<li data-section="ordersSection">
+        <nav class="desktop-nav">
 
-Orders
+            <a href="index.html">Home</a>
 
-</li>
+            <a href="Bespoke.html">Bespoke</a>
 
-<li data-section="sizesSection">
+            <a href="about.html">About</a>
 
-Saved Sizes
+            <a href="contact.html">Contact</a>
 
-</li>
+        </nav>
 
-<li data-section="addressSection">
+        <div class="header-actions">
 
-Addresses
+            <a href="account.html" class="header-icon">
+                <i data-lucide="user"></i>
+            </a>
 
-</li>
+            <a href="cart.html" class="header-icon cart-btn">
 
-<li id="logoutBtn">
+                <i data-lucide="shopping-bag"></i>
 
-Logout
+                <span id="cartCountBadge">0</span>
 
-</li>
+            </a>
 
-</ul>
+            <div class="menu-toggle" id="menu-toggle">
+                ☰
+            </div>
 
-</div>
+        </div>
 
-<!-- MAIN -->
+    </header>
 
-<div class="account-main">
+    <section class="account-page">
 
-<h1>
+        <!-- SIDEBAR -->
 
-Welcome Back
+        <div class="account-sidebar">
 
-</h1>
+            <h2>
+                ROYYD
+            </h2>
 
-<p class="account-subtext">
+            <ul>
 
-Manage your tailoring experience
+                <li class="active-account" data-section="dashboardSection">
 
-</p>
+                    Dashboard
 
+                </li>
 
-<!-- CARDS -->
+                <li data-section="ordersSection">
 
+                    Orders
 
-<div id="dashboardSection"
-class="account-section">
+                </li>
 
-<div class="recent-orders">
+                <li data-section="sizesSection">
 
-<h2>
-Dashboard
-</h2>
+                    Saved Sizes
 
-<div id="ordersContainer">
+                </li>
 
-</div>
+                <li data-section="addressSection">
 
-</div>
+                    Addresses
 
-</div>
+                </li>
 
+                <li id="logoutBtn">
 
-<div id="ordersSection"
-class="account-section"
-style="display:none;">
+                    Logout
 
-<div class="recent-orders">
+                </li>
 
-<h2>
-All Orders
-</h2>
+            </ul>
 
-<div id="allOrdersContainer">
+        </div>
 
-</div>
+        <!-- MAIN -->
 
-</div>
+        <div class="account-main">
 
-</div>
+            <h1>
 
+                Welcome Back
 
-<div id="sizesSection"
-class="account-section"
-style="display:none;">
+            </h1>
 
-<div class="recent-orders">
+            <p class="account-subtext">
 
-<h2>
-Saved Sizes
-</h2>
+                Manage your tailoring experience
 
-<div id="savedSizesContainer">
+            </p>
 
-</div>
 
-</div>
+            <!-- CARDS -->
 
-</div>
 
+            <div id="dashboardSection" class="account-section">
 
-<div id="addressSection"
-class="account-section"
-style="display:none;">
+                <div class="recent-orders">
 
-<div class="recent-orders">
+                    <h2>
+                        Dashboard
+                    </h2>
 
-<h2>
-Saved Addresses
-</h2>
+                    <div id="ordersContainer">
 
-<div id="savedAddressContainer">
+                    </div>
 
-</div>
+                </div>
 
-</div>
+            </div>
 
-</div>
 
-</div>
+            <div id="ordersSection" class="account-section" style="display:none;">
 
+                <div class="recent-orders">
 
+                    <h2>
+                        All Orders
+                    </h2>
 
-</section>
+                    <div id="allOrdersContainer">
 
-<script>
+                    </div>
 
-    const currentUser =
+                </div>
 
-JSON.parse(
-localStorage.getItem("royydCurrentUser")
-);
+            </div>
 
-if(!currentUser){
 
-window.location.href =
-"login.html";
+            <div id="sizesSection" class="account-section" style="display:none;">
 
-}
+                <div class="recent-orders">
 
-const ordersContainer =
-document.getElementById("ordersContainer");
+                    <h2>
+                        Saved Sizes
+                    </h2>
 
-const orders =
-JSON.parse(
-localStorage.getItem("royydOrders")
-) || [];
+                    <div id="savedSizesContainer">
 
-if(orders.length === 0){
+                    </div>
 
-ordersContainer.innerHTML = `
+                </div>
+
+            </div>
+
+
+            <div id="addressSection" class="account-section" style="display:none;">
+
+                <div class="recent-orders">
+
+                    <h2>
+                        Saved Addresses
+                    </h2>
+
+                    <div id="savedAddressContainer">
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </section>
+
+    <footer class="royyd-footer">
+
+    <div class="footer-top">
+
+        <div class="footer-brand">
+
+            <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD">
+
+            <h2>ROYYD</h2>
+
+            <p>
+                Fine Custom Tailoring crafted for the modern gentleman.
+                Precision. Elegance. Individuality.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Explore</h3>
+
+            <a href="index.html">Home</a>
+            <a href="Bespoke.html">Bespoke</a>
+            <a href="Bespoke.html">Collections</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Customer Care</h3>
+
+            <a href="#">Shipping Policy</a>
+            <a href="#">Returns & Exchanges</a>
+            <a href="#">Size Guide</a>
+            <a href="#">FAQ</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Contact</h3>
+
+            <p>Jaipur, Rajasthan</p>
+
+            <p>royyd29@gmail.com</p>
+
+            <p>+91 76888 88825</p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-newsletter">
+
+        <h3>Join The ROYYD Circle</h3>
+
+        <p>
+            Receive tailoring insights, new collections,
+            and exclusive consultations.
+        </p>
+
+        <div class="newsletter-box">
+
+            <input type="email"
+                   placeholder="Enter your email">
+
+            <button>Subscribe</button>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 ROYYD. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+    <script>
+
+        const currentUser =
+
+            JSON.parse(
+                localStorage.getItem("royydCurrentUser")
+            );
+
+        if (!currentUser) {
+
+            window.location.href =
+                "login.html";
+
+        }
+
+        const ordersContainer =
+            document.getElementById("ordersContainer");
+
+        const orders =
+            JSON.parse(
+                localStorage.getItem("royydOrders")
+            ) || [];
+
+        if (orders.length === 0) {
+
+            ordersContainer.innerHTML = `
 
 <div class="empty-account">
 
@@ -227,11 +354,11 @@ Start Shopping
 
 `;
 
-}else{
+        } else {
 
-orders.reverse().forEach((order) => {
+            orders.reverse().forEach((order) => {
 
-ordersContainer.innerHTML += `
+                ordersContainer.innerHTML += `
 
 <div class="order-item">
 
@@ -261,77 +388,77 @@ ${order.status}
 
 `;
 
-});
+            });
 
-}
+        }
 
 
 
-const sidebarItems =
-document.querySelectorAll(
-".account-sidebar li[data-section]"
-);
+        const sidebarItems =
+            document.querySelectorAll(
+                ".account-sidebar li[data-section]"
+            );
 
-const sections =
-document.querySelectorAll(
-".account-section"
-);
+        const sections =
+            document.querySelectorAll(
+                ".account-section"
+            );
 
-sidebarItems.forEach((item) => {
+        sidebarItems.forEach((item) => {
 
-item.addEventListener("click", () => {
+            item.addEventListener("click", () => {
 
-sidebarItems.forEach((nav) => {
+                sidebarItems.forEach((nav) => {
 
-nav.classList.remove("active-account");
+                    nav.classList.remove("active-account");
 
-});
+                });
 
-item.classList.add("active-account");
+                item.classList.add("active-account");
 
-const target =
-item.getAttribute("data-section");
+                const target =
+                    item.getAttribute("data-section");
 
-sections.forEach((section) => {
+                sections.forEach((section) => {
 
-section.style.display = "none";
+                    section.style.display = "none";
 
-});
+                });
 
-document.getElementById(target)
-.style.display = "block";
+                document.getElementById(target)
+                    .style.display = "block";
 
-});
+            });
 
-});
+        });
 
-const logoutBtn =
-document.getElementById("logoutBtn");
+        const logoutBtn =
+            document.getElementById("logoutBtn");
 
-logoutBtn.addEventListener("click", () => {
+        logoutBtn.addEventListener("click", () => {
 
-localStorage.removeItem("royydCurrentUser");
+            localStorage.removeItem("royydCurrentUser");
 
-window.location.href =
-"login.html";
+            window.location.href =
+                "login.html";
 
-});
+        });
 
-const savedSizesContainer =
-document.getElementById(
-"savedSizesContainer"
-);
+        const savedSizesContainer =
+            document.getElementById(
+                "savedSizesContainer"
+            );
 
-const savedSizes =
-JSON.parse(
-localStorage.getItem("royydSavedSizes")
-);
+        const savedSizes =
+            JSON.parse(
+                localStorage.getItem("royydSavedSizes")
+            );
 
-if(savedSizesContainer){
+        if (savedSizesContainer) {
 
-if(savedSizes){
+            if (savedSizes) {
 
-savedSizesContainer.innerHTML = `
+                savedSizesContainer.innerHTML = `
 
 <div class="saved-size-card">
 
@@ -369,9 +496,9 @@ Preferred Fit:
 
 `;
 
-}else{
+            } else {
 
-savedSizesContainer.innerHTML = `
+                savedSizesContainer.innerHTML = `
 
 <p class="account-placeholder">
 
@@ -381,25 +508,25 @@ No saved measurements yet.
 
 `;
 
-}
+            }
 
-}
+        }
 
-const savedAddressContainer =
-document.getElementById(
-"savedAddressContainer"
-);
+        const savedAddressContainer =
+            document.getElementById(
+                "savedAddressContainer"
+            );
 
-const savedAddress =
-JSON.parse(
-localStorage.getItem("royydSavedAddress")
-);
+        const savedAddress =
+            JSON.parse(
+                localStorage.getItem("royydSavedAddress")
+            );
 
-if(savedAddressContainer){
+        if (savedAddressContainer) {
 
-if(savedAddress){
+            if (savedAddress) {
 
-savedAddressContainer.innerHTML = `
+                savedAddressContainer.innerHTML = `
 
 <div class="saved-size-card">
 
@@ -442,9 +569,9 @@ Pincode:
 
 `;
 
-}else{
+            } else {
 
-savedAddressContainer.innerHTML = `
+                savedAddressContainer.innerHTML = `
 
 <p class="account-placeholder">
 
@@ -454,10 +581,14 @@ No saved address yet.
 
 `;
 
-}
+            }
 
-}
+        }
 
+    </script>
+
+    <script>
+lucide.createIcons();
 </script>
 </body>
 

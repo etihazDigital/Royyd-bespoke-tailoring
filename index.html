@@ -8,493 +8,776 @@
 
     <title>ROYYD Tailoring</title>
 
-    <!-- GOOGLE FONTS -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
+
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+
 
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
+    <div class="announcement-bar">
 
-    <header class="navbar">
+        <div class="announcement-track">
 
-    <div class="logo-wrapper">
+            <span>Bespoke Tailoring</span>
+            <span>★</span>
 
-        <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD Logo">
+            <span>Premium Fabrics</span>
+            <span>★</span>
 
-        <div class="logo-text">
+            <span>Personal Consultation</span>
+            <span>★</span>
 
-            <h2>ROYYD</h2>
+            <span>Perfect Fit Promise</span>
+            <span>★</span>
 
-            <span>
-                FINE CUSTOM TAILORING
-            </span>
+            <span>Bespoke Tailoring</span>
+            <span>★</span>
+
+            <span>Premium Fabrics</span>
+            <span>★</span>
+
+            <span>Personal Consultation</span>
+            <span>★</span>
+
+            <span>Perfect Fit Promise</span>
 
         </div>
 
     </div>
 
-    <div class="menu-toggle" id="menu-toggle">
-        ☰
-    </div>
+    <header class="navbar">
 
-    <nav id="nav-menu">
+        <a href="index.html" class="logo-wrapper">
 
-        <ul class="nav-links">
+            <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD Logo">
 
-<li>
-<a href="index.html">
-Home
-</a>
-</li>
+            <div class="logo-text">
 
-<li>
-<a href="Bespoke.html">
-Bespoke
-</a>
-</li>
+                <h2>ROYYD</h2>
 
-<li>
-<a href="about.html">
-About
-</a>
-</li>
+                <span>FINE CUSTOM TAILORING</span>
 
-<li>
-<a href="contact.html">
-Contact
-</a>
-</li>
+            </div>
 
-<li>
-<a href="login.html"
-id="accountNavLink">
+        </a>
 
-Login
+        <nav class="desktop-nav">
 
-</a>
-</li>
+            <a href="index.html">Home</a>
 
-<li>
-<a href="cart.html"
-id="cartNavCount">
+            <a href="Bespoke.html">Bespoke</a>
 
-Cart
+            <a href="about.html">About</a>
 
-</a>
-</li>
+            <a href="contact.html">Contact</a>
 
-</ul>
+        </nav>
 
-    </nav>
+        <div class="header-actions">
 
-</header>
+            <a href="account.html" class="header-icon">
+                <i data-lucide="user"></i>
+            </a>
 
-    <!-- HERO SECTION -->
+            <a href="cart.html" class="header-icon cart-btn">
 
+                <i data-lucide="shopping-bag"></i>
+
+                <span id="cartCountBadge">0</span>
+
+            </a>
+
+            <div class="menu-toggle" id="menu-toggle">
+                ☰
+            </div>
+
+        </div>
+
+    </header>
     <section class="hero">
 
-        <div class="overlay"></div>
+        <div class="hero-overlay"></div>
 
         <div class="hero-content">
 
-            <p class="tagline">
-                EXPERIENCE THE ART OF FINE TAILORING
-            </p>
+
 
             <h1>
-                Crafted For <span>Perfect Fit</span> & Timeless Elegance
+
+                Bespoke Tailoring
+                Designed Around You
+
             </h1>
 
             <p class="hero-description">
 
-                Premium custom tailoring for men with luxurious fabrics,
-                precision craftsmanship, and a fit designed exclusively for you.
+                Premium garments crafted to your
+                measurements and preferences.
 
             </p>
 
             <div class="hero-buttons">
 
-                <a href="Bespoke.html" class="primary-btn">
-                   Start Bespoke
+                <a href="Bespoke.html" class="hero-primary">
+
+                    Start Bespoke
+
                 </a>
 
-                <button class="secondary-btn">
-                    Explore Collection
-                </button>
+
 
             </div>
 
         </div>
 
     </section>
-             
 
-    <!-- MEASUREMENT STEPS -->
+    <section class="trust-section">
 
-<section class="steps-section">
+        <div class="trust-grid">
 
-    <div class="section-title">
+            <div class="trust-item">
 
-        <p>BESPOKE PROCESS</p>
+                <h2>10+</h2>
 
-        <h2>
-            Crafted Around Your Measurements
-        </h2>
+                <p>Luxury Fabrics</p>
 
-    </div>
+            </div>
 
-    <div class="steps-grid">
+            <div class="trust-item">
 
-        <div class="step-card">
+                <h2>Bespoke</h2>
 
-            <div class="step-number">01</div>
+                <p>Tailoring Experience</p>
 
-            <h3>Choose Your Fabric</h3>
+            </div>
 
-            <p>
-                Explore luxurious fabrics carefully selected for comfort and elegance.
-            </p>
+            <div class="trust-item">
 
-        </div>
+                <h2>1-on-1</h2>
 
-        <div class="step-card">
+                <p>Personal Consultation</p>
 
-            <div class="step-number">02</div>
+            </div>
 
-            <h3>Submit Measurements</h3>
+            <div class="trust-item">
 
-            <p>
-                Personalize every detail with your perfect fit and styling preferences.
-            </p>
+                <h2>100%</h2>
 
-        </div>
-
-        <div class="step-card">
-
-            <div class="step-number">03</div>
-
-            <h3>Tailored To Perfection</h3>
-
-            <p>
-                Expert craftsmen create a refined garment designed exclusively for you.
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-    <!-- FABRIC SECTION -->
-
-<section class="fabric-section">
-
-    <div class="section-title">
-
-        <p>PREMIUM COLLECTION</p>
-
-        <h2>
-            Handpicked Luxury Fabrics
-        </h2>
-
-    </div>
-
-    <div class="fabric-grid">
-
-        <div class="fabric-card">
-
-            <img src="https://i.postimg.cc/8z7k40b1/Luxury-Tweed-Double-Breasted-Suit-Slim-Fit-Elegant-Formal-Wear.jpg" alt="Fabric">
-
-            <div class="fabric-content">
-
-                <h3>Italian Cotton</h3>
-
-                <p>
-                    Soft luxury fabric tailored for timeless elegance.
-                </p>
+                <p>Fit Promise</p>
 
             </div>
 
         </div>
 
-        <div class="fabric-card">
+    </section>
 
-            <img src="https://i.postimg.cc/g2xcsTK0/Mode-fur-Manner.jpg" alt="Fabric">
+    <section class="craft-banner">
 
-            <div class="fabric-content">
+        <img src="https://i.postimg.cc/MTtxdXCw/IMG-20260603-WA0007.jpg" alt="ROYYD Craftsmanship">
 
-                <h3>Premium Linen</h3>
+        <div class="craft-content">
 
-                <p>
-                    Breathable handcrafted linen for refined comfort.
-                </p>
+            <h2>
+                Crafted Around You
+            </h2>
 
+            <p>
+                Bespoke tailoring designed around your measurements, preferences and lifestyle.
+            </p>
+
+            <a href="Bespoke.html">
+                Explore Bespoke
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <section class="best-sellers">
+
+
+
+        <div class="section-heading">
+
+            <div>
+                <span>THE ROYYD EDIT</span>
+                <h2>Best Sellers</h2>
+            </div>
+
+            <div class="slider-nav">
+                <a href="Bespoke.html">View All</a>
+
+                <button id="prevBtn">←</button>
+                <button id="nextBtn">→</button>
             </div>
 
         </div>
 
-        <div class="fabric-card">
+        <div class="products-slider" id="productSlider">
+            <div class="product-card home-product" data-category="shirt" data-size-type="shirt"
+                data-title="Royal Linen Shirt" data-price="3490"
+                data-image="https://i.postimg.cc/8cgGjrfY/download-(9).jpg">
+                <img src="https://i.postimg.cc/8cgGjrfY/download-(9).jpg">
+                <h3>Royal Linen Shirt</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
 
-            <img src="https://i.postimg.cc/rwDyjP9w/Distinguished-menswear.jpg" alt="Fabric">
+            <div class="product-card home-product" data-category="trouser" data-size-type="trouser"
+                data-title="Noble Straight Trouser" data-price="3990"
+                data-image="https://i.postimg.cc/7ZYvPHqh/IMG-20260505-WA0032.jpg">
+                <img src="https://i.postimg.cc/7ZYvPHqh/IMG-20260505-WA0032.jpg">
+                <h3>Noble Straight Trouser</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
 
-            <div class="fabric-content">
+            <div class="product-card home-product" data-category="suit" data-size-type="full"
+                data-title="Midnight Royal Suit" data-price="8990"
+                data-image="https://i.postimg.cc/cLv1hbcd/Custom-White-Two-Piece-Suit-Formal-Wedding-Outfit-groom-outfit.jpg">
+                <img
+                    src="https://i.postimg.cc/cLv1hbcd/Custom-White-Two-Piece-Suit-Formal-Wedding-Outfit-groom-outfit.jpg">
+                <h3>Midnight Royal Suit</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
 
-                <h3>Royal Blends</h3>
+            <div class="product-card home-product" data-category="royyd-edit" data-size-type="full"
+                data-title="Executive Navy Blazer" data-price="6990"
+                data-image="https://i.postimg.cc/0QY0S00t/Mens-navy-blue-pinstripe-double-breasted-blazer-with-white-pants-Custom-tailored-wedding-outfit.jpg">
+                <img
+                    src="https://i.postimg.cc/0QY0S00t/Mens-navy-blue-pinstripe-double-breasted-blazer-with-white-pants-Custom-tailored-wedding-outfit.jpg">
+                <h3>Executive Navy Blazer</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
 
-                <p>
-                    Rich textures inspired by modern royal tailoring.
-                </p>
+            <div class="product-card home-product" data-category="shirt" data-size-type="shirt"
+                data-title="Classic Oxford Shirt" data-price="3490"
+                data-image="https://i.postimg.cc/MT6KzFNb/27122e3da36503696a233fa60b56f887.jpg">
+                <img src="https://i.postimg.cc/MT6KzFNb/27122e3da36503696a233fa60b56f887.jpg">
+                <h3>Classic Oxford Shirt</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
 
+            <div class="product-card home-product" data-category="trouser" data-size-type="trouser"
+                data-title="Heritage Pleated Trouser" data-price="4290"
+                data-image="https://i.postimg.cc/G2Lhb5VX/b59354aa1292776a993eadd2628050d2.jpg">
+                <img src="https://i.postimg.cc/G2Lhb5VX/b59354aa1292776a993eadd2628050d2.jpg">
+                <h3>Heritage Pleated Trouser</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
+
+            <div class="product-card home-product" data-category="suit" data-size-type="full"
+                data-title="Royal Wedding Suit" data-price="12990"
+                data-image="https://i.postimg.cc/bJcRdBkR/Black-Color-Heavy-Embroidered-Suiting-Fabric-Jodhpuri-Suit-Ethnic-Bandhgala-for-Men-Etsy.jpg">
+                <img
+                    src="https://i.postimg.cc/bJcRdBkR/Black-Color-Heavy-Embroidered-Suiting-Fabric-Jodhpuri-Suit-Ethnic-Bandhgala-for-Men-Etsy.jpg">
+                <h3>Royal Wedding Suit</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
+
+            <div class="product-card home-product" data-category="royyd-edit" data-size-type="full"
+                data-title="Signature Double Breasted Blazer" data-price="7490"
+                data-image="https://i.postimg.cc/9MdY9YYn/blazer-jacket-Overcoat-Suit-for-Men-Formal-Suit-Classic-2-Piece-Charcoal-Black-Double-Breasted-Wool.jpg">
+                <img
+                    src="https://i.postimg.cc/9MdY9YYn/blazer-jacket-Overcoat-Suit-for-Men-Formal-Suit-Classic-2-Piece-Charcoal-Black-Double-Breasted-Wool.jpg">
+                <h3>Signature Double Breasted Blazer</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
+
+            <div class="product-card home-product" data-category="shirt" data-size-type="shirt"
+                data-title="Executive White Shirt" data-price="3490"
+                data-image="https://i.postimg.cc/m2JD7V1z/6314328953b1413ad7f4255b93e9e944.jpg">
+                <img src="https://i.postimg.cc/m2JD7V1z/6314328953b1413ad7f4255b93e9e944.jpg">
+                <h3>Executive White Shirt</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
+
+            <div class="product-card home-product" data-category="suit" data-size-type="full"
+                data-title="ROYYD Evening Suit" data-price="9990"
+                data-image="https://i.postimg.cc/g2xcsTK0/Mode-fur-Manner.jpg">
+                <img src="https://i.postimg.cc/g2xcsTK0/Mode-fur-Manner.jpg">
+                <h3>ROYYD Evening Suit</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
             </div>
 
         </div>
 
-    </div>
-
-</section>
 
 
-<!-- CUSTOMIZATION SECTION -->
+    </section>
 
-<section class="custom-section">
+    <section class="new-arrivals">
 
-    <div class="section-title">
+        <div class="section-heading">
 
-        <p>TAILOR YOUR STYLE</p>
+            <div>
+                <span>LATEST COLLECTION</span>
+                <h2>New Arrivals</h2>
+            </div>
 
-        <h2>
-            Customize Your Perfect Outfit
-        </h2>
+            <div class="slider-nav">
+                <a href="Bespoke.html">View All</a>
+                <button id="newPrevBtn">←</button>
+                <button id="newNextBtn">→</button>
+            </div>
 
-    </div>
+        </div>
 
-    <div class="custom-grid">
+        <div class="products-slider" id="newArrivalSlider">
 
-        <!-- LEFT -->
+            <div class="product-card home-product" data-category="shirt" data-size-type="shirt"
+                data-title="Summer Linen Shirt" data-price="3490"
+                data-image="https://i.postimg.cc/7LTvz8J1/77c80727994ef4567d36898f7f3b2c0b.jpg">
+                <img src="https://i.postimg.cc/7LTvz8J1/77c80727994ef4567d36898f7f3b2c0b.jpg">
+                <h3>Summer Linen Shirt</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
 
-        <div class="custom-options">
+            <div class="product-card home-product" data-category="shirt" data-size-type="shirt"
+                data-title="Executive White Shirt" data-price="3490"
+                data-image="https://i.postimg.cc/hG7FmWQ7/5713554e5f26e1d286810da1fae39f64.jpg">
+                <img src="https://i.postimg.cc/hG7FmWQ7/5713554e5f26e1d286810da1fae39f64.jpg">
+                <h3>Executive White Shirt</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
 
-            <div class="option-box">
+            <div class="product-card home-product" data-category="suit" data-size-type="full"
+                data-title="Italian Double Breasted Suit" data-price="10990"
+                data-image="https://i.postimg.cc/8z7k40b1/Luxury-Tweed-Double-Breasted-Suit-Slim-Fit-Elegant-Formal-Wear.jpg">
+                <img
+                    src="https://i.postimg.cc/8z7k40b1/Luxury-Tweed-Double-Breasted-Suit-Slim-Fit-Elegant-Formal-Wear.jpg">
+                <h3>Italian Double Breasted Suit</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
 
-                <h3>Select Fit</h3>
+            <div class="product-card home-product" data-category="royyd-edit" data-size-type="full"
+                data-title="Heritage Safari Jacket" data-price="7490"
+                data-image="https://i.postimg.cc/YSmcFKLY/5d3f73c536db19358043b0985c7e3494.jpg">
+                <img src="https://i.postimg.cc/YSmcFKLY/5d3f73c536db19358043b0985c7e3494.jpg">
+                <h3>Heritage Safari Jacket</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
 
-                <div class="option-buttons">
+            <div class="product-card home-product" data-category="suit" data-size-type="full"
+                data-title="Royal Wedding Bandhgala" data-price="12990"
+                data-image="https://i.postimg.cc/XvyM5SBw/8c6e6e9d01806fc283019739e5d0129b.jpg">
+                <img src="https://i.postimg.cc/XvyM5SBw/8c6e6e9d01806fc283019739e5d0129b.jpg">
+                <h3>Royal Wedding Bandhgala</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
 
-                    <button>Slim Fit</button>
-                    <button>Regular</button>
-                    <button>Relaxed</button>
+            <div class="product-card home-product" data-category="suit" data-size-type="full"
+                data-title="Midnight Black Suit" data-price="9990"
+                data-image="https://i.postimg.cc/mrFx9f1V/6fbe9adcae93bc203bcb0dc6a5fa79de.jpg">
+                <img src="https://i.postimg.cc/mrFx9f1V/6fbe9adcae93bc203bcb0dc6a5fa79de.jpg">
+                <h3>Midnight Black Suit</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
 
+            <div class="product-card home-product" data-category="shirt" data-size-type="shirt"
+                data-title="Classic Oxford Shirt" data-price="3490"
+                data-image="https://i.postimg.cc/W4JRZLqY/4d703c0ffa139481e12e379f0d14d213.jpg">
+                <img src="https://i.postimg.cc/W4JRZLqY/4d703c0ffa139481e12e379f0d14d213.jpg">
+                <h3>Classic Oxford Shirt</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
+
+            <div class="product-card home-product" data-category="royyd-edit" data-size-type="full"
+                data-title="Signature Navy Blazer" data-price="7990"
+                data-image="https://i.postimg.cc/43hCckHq/b19546c3a348365051c80978ba2bb66f.jpg">
+                <img src="https://i.postimg.cc/43hCckHq/b19546c3a348365051c80978ba2bb66f.jpg">
+                <h3>Signature Navy Blazer</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
+
+            <div class="product-card home-product" data-category="trouser" data-size-type="trouser"
+                data-title="Premium Pleated Trouser" data-price="3990"
+                data-image="https://i.postimg.cc/t4C0Rq9Y/IMG-20260505-WA0031.jpg">
+                <img src="https://i.postimg.cc/t4C0Rq9Y/IMG-20260505-WA0031.jpg">
+                <h3>Premium Pleated Trouser</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
+
+            <div class="product-card home-product" data-category="royyd-edit" data-size-type="full"
+                data-title="Luxury Evening Jacket" data-price="8490"
+                data-image="https://i.postimg.cc/tgV06QnM/55cd904c2b935d2af3180755948caa18.jpg">
+                <img src="https://i.postimg.cc/tgV06QnM/55cd904c2b935d2af3180755948caa18.jpg">
+                <h3>Luxury Evening Jacket</h3>
+                
+                <span class="customize-link">
+                    Customize
+                </span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="categories-section">
+
+        <div class="section-heading-center">
+            <span>SHOP BY CATEGORY</span>
+            <h2>Explore Collections</h2>
+        </div>
+
+        <div class="category-grid">
+
+            <a href="Bespoke.html#shirts" class="category-card">
+                <img src="https://i.postimg.cc/W4JRZLqY/4d703c0ffa139481e12e379f0d14d213.jpg">
+                <div class="category-overlay">
+                    <h3>Shirts</h3>
                 </div>
+            </a>
 
-            </div>
-
-            <div class="option-box">
-
-                <h3>Select Collar</h3>
-
-                <div class="option-buttons">
-
-                    <button>Mandarin</button>
-                    <button>Spread</button>
-                    <button>Classic</button>
-
+            <a href="Bespoke.html#trousers" class="category-card">
+                <img src="https://i.postimg.cc/cHHF3fzC/151ce84c46826886dd8430c9a977cfb9.jpg">
+                <div class="category-overlay">
+                    <h3>Trousers</h3>
                 </div>
+            </a>
 
-            </div>
-
-            <div class="option-box">
-
-                <h3>Select Sleeve</h3>
-
-                <div class="option-buttons">
-
-                    <button>Half Sleeve</button>
-                    <button>Full Sleeve</button>
-
+            <a href="Bespoke.html#suits" class="category-card">
+                <img src="https://i.postimg.cc/g2xcsTK0/Mode-fur-Manner.jpg">
+                <div class="category-overlay">
+                    <h3>Suits</h3>
                 </div>
+            </a>
 
-            </div>
+            <a href="Bespoke.html#royydedit" class="category-card">
+                <img
+                    src="https://i.postimg.cc/9MdY9YYn/blazer-jacket-Overcoat-Suit-for-Men-Formal-Suit-Classic-2-Piece-Charcoal-Black-Double-Breasted-Wool.jpg">
+                <div class="category-overlay">
+                    <h3>Royyd Edit</h3>
+                </div>
+            </a>
 
-            <div class="measurement-box">
+        </div>
 
-                <h3>Your Measurements</h3>
+    </section>
 
-                <input type="text" placeholder="Chest Size">
-                <input type="text" placeholder="Shoulder Size">
-                <input type="text" placeholder="Waist Size">
-                <input type="text" placeholder="Sleeve Length">
+    <section class="heritage-banner">
+
+        <div class="heritage-overlay"></div>
+
+        <div class="heritage-content">
+
+            <span>ROYYD HERITAGE</span>
+
+            <h2>Our Heritage</h2>
+
+            <p>
+                Decades of tailoring expertise brought into every garment.
+            </p>
+
+            <a href="about.html">
+                Our Story
+            </a>
+
+        </div>
+
+    </section>
+
+    <section class="studio-section">
+
+        <div class="studio-image">
+            <img src="https://i.postimg.cc/pdRVfWjd/IMG-20260511-155703.jpg">
+        </div>
+
+        <div class="studio-content">
+
+            <span>VISIT ROYYD</span>
+
+            <h2>Experience Tailoring In Person</h2>
+
+            <p>
+                Meet our tailoring experts, explore premium fabrics and get measured for a garment made exclusively for
+                you.
+            </p>
+
+            <div class="studio-buttons">
+
+                <a href="contact.html" class="studio-primary">
+                    Book Appointment
+                </a>
+
+                <a href="contact.html" class="studio-secondary">
+                    Find Our Studio
+                </a>
 
             </div>
 
         </div>
 
-        <!-- RIGHT -->
+    </section>
 
-        <div class="preview-card">
+    <section class="gallery-section">
 
-            <img src="https://i.postimg.cc/NMPsTZmS/IMG-20260511-164905.jpg" alt="Custom Tailoring">
+        <div class="section-heading-center">
 
-            <div class="preview-content">
+            <span>ROYYD MOMENTS</span>
 
-                <h3>Luxury Tailoring Experience</h3>
+            <h2>Inside The World Of ROYYD</h2>
+
+        </div>
+
+        <div class="gallery-grid">
+
+            <img src="https://i.postimg.cc/76G8rCk5/43f9c3a7edce090062599477b7d725c3.jpg">
+            <img src="https://i.postimg.cc/dV6K2P6q/3b53924db2446580d31f91b389d9bdb2.jpg">
+            <img src="https://i.postimg.cc/g2sPVFDC/ca0e5df63b3dc966cf91c0da8fb676c3.jpg">
+            <img src="https://i.postimg.cc/x15SvDRW/91c8be68aa5586fd5f281307e4011c10.jpg">
+            <img src="https://i.postimg.cc/BnpGT9pW/62f8261d2b79421c4bc885dd0a307fec.jpg">
+            <img src="https://i.postimg.cc/9Qbjd5bc/14d0a1df25b0e8f4d6c0b74c7e105fef.jpg">
+
+        </div>
+
+    </section>
+
+    <section class="testimonials">
+
+        <div class="section-heading-center">
+
+            <span>CLIENT EXPERIENCES</span>
+
+            <h2>What Our Clients Say</h2>
+
+        </div>
+
+        <div class="testimonial-grid">
+
+            <div class="testimonial-card">
 
                 <p>
-                    Every outfit is handcrafted with precision,
-                    elegance, and your perfect fit in mind.
+                    "The fit was absolutely perfect. The attention to detail is unmatched."
                 </p>
 
-                <button class="primary-btn">
-                    Book Consultation
-                </button>
+                <h4>— Rahul Sharma</h4>
+
+            </div>
+
+            <div class="testimonial-card">
+
+                <p>
+                    "ROYYD delivered exactly what I imagined. Premium experience from start to finish."
+                </p>
+
+                <h4>— Arjun Mehta</h4>
+
+            </div>
+
+            <div class="testimonial-card">
+
+                <p>
+                    "Luxury tailoring done right. The fabrics and finishing are exceptional."
+                </p>
+
+                <h4>— Karan Singh</h4>
 
             </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
 
-<!-- WHY CHOOSE US -->
+    <footer class="royyd-footer">
 
-<section class="why-section">
+    <div class="footer-top">
 
-    <div class="section-title">
+        <div class="footer-brand">
 
-        <p>WHY ROYYD</p>
+            <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD">
 
-        <h2>
-            Tailoring Crafted With Excellence
-        </h2>
-
-    </div>
-
-    <div class="why-grid">
-
-        <div class="why-card">
-
-            <h3>Premium Fabrics</h3>
+            <h2>ROYYD</h2>
 
             <p>
-                Carefully sourced luxury fabrics for unmatched elegance and comfort.
+                Fine Custom Tailoring crafted for the modern gentleman.
+                Precision. Elegance. Individuality.
             </p>
 
         </div>
 
-        <div class="why-card">
+        <div class="footer-column">
 
-            <h3>Perfect Measurements</h3>
+            <h3>Explore</h3>
 
-            <p>
-                Every outfit is tailored precisely for your body and personal style.
-            </p>
-
-        </div>
-
-        <div class="why-card">
-
-            <h3>Handcrafted Finish</h3>
-
-            <p>
-                Expert craftsmanship inspired by timeless royal tailoring traditions.
-            </p>
+            <a href="index.html">Home</a>
+            <a href="Bespoke.html">Bespoke</a>
+            <a href="Bespoke.html">Collections</a>
+            <a href="contact.html">Contact</a>
 
         </div>
 
-    </div>
+        <div class="footer-column">
 
-</section>
+            <h3>Customer Care</h3>
 
-<!-- TESTIMONIALS -->
-
-<section class="testimonial-section">
-
-    <div class="section-title">
-
-        <p>CLIENT EXPERIENCE</p>
-
-        <h2>
-            What Our Clients Say
-        </h2>
-
-    </div>
-
-    <div class="testimonial-grid">
-
-        <div class="testimonial-card">
-
-            <p>
-                “Absolutely loved the tailoring quality and premium fitting experience.”
-            </p>
-
-            <h4>- Rajveer Singh</h4>
+            <a href="#">Shipping Policy</a>
+            <a href="#">Returns & Exchanges</a>
+            <a href="#">Size Guide</a>
+            <a href="#">FAQ</a>
 
         </div>
 
-        <div class="testimonial-card">
+        <div class="footer-column">
 
-            <p>
-                “The craftsmanship and luxury finishing exceeded all expectations.”
-            </p>
+            <h3>Contact</h3>
 
-            <h4>- Harshit Mehta</h4>
+            <p>Jaipur, Rajasthan</p>
 
-        </div>
+            <p>royyd29@gmail.com</p>
 
-        <div class="testimonial-card">
+            <p>+91 76888 88825</p>
 
-            <p>
-                “ROYYD perfectly blends modern elegance with royal tailoring.”
-            </p>
-
-            <h4>- Aman Rathore</h4>
 
         </div>
 
     </div>
 
-</section>
+    <div class="footer-newsletter">
 
-<!-- FOOTER -->
+        <h3>Join The ROYYD Circle</h3>
 
-<footer class="footer">
+        <p>
+            Receive tailoring insights, new collections,
+            and exclusive consultations.
+        </p>
 
-    <h2>ROYYD</h2>
+        <div class="newsletter-box">
 
-    <p>
-        Fine Custom Tailoring For Modern Gentlemen.
-    </p>
+            <input type="email"
+                   placeholder="Enter your email">
 
-    <div class="footer-links">
+            <button>Subscribe</button>
 
-        <a href="#">Instagram</a>
-        <a href="#">Contact</a>
-        <a href="#">Collections</a>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 ROYYD. All Rights Reserved.
+        </p>
 
     </div>
 
 </footer>
-<a href="https://wa.me/917688888825"
-class="whatsapp-float"
-target="_blank">
+    <script>
+        const slider = document.getElementById("productSlider");
 
-<img src="https://cdn-icons-png.flaticon.com/512/733/733585.png"
-alt="WhatsApp">
+        document.getElementById("nextBtn").onclick = () => {
+            slider.scrollBy({
+                left: 600,
+                behavior: "smooth"
+            });
+        };
 
-</a>
-    <!-- JS -->
+        document.getElementById("prevBtn").onclick = () => {
+            slider.scrollBy({
+                left: -600,
+                behavior: "smooth"
+            });
+        };
+    </script>
+
+    <script>
+        const newSlider = document.getElementById("newArrivalSlider");
+
+        document.getElementById("newNextBtn").onclick = () => {
+            newSlider.scrollBy({
+                left: 600,
+                behavior: "smooth"
+            });
+        };
+
+        document.getElementById("newPrevBtn").onclick = () => {
+            newSlider.scrollBy({
+                left: -600,
+                behavior: "smooth"
+            });
+        };
+    </script>
 
     <script src="script.js"></script>
 
+    <a href="https://wa.me/917688888825" class="whatsapp-float">
+
+        <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+
+    </a>
+
+    <script>
+lucide.createIcons();
+</script>
 </body>
 
 </html>

@@ -14,6 +14,8 @@
 
 <link rel="stylesheet" href="style.css">
 
+<script src="https://unpkg.com/lucide@latest"></script>
+
 </head>
 
 <body>
@@ -22,32 +24,53 @@
 
 <header class="navbar">
 
-<div class="logo-wrapper">
+        <a href="index.html" class="logo-wrapper">
 
-<img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD Logo">
+            <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD Logo">
 
-<div class="logo-text">
+            <div class="logo-text">
 
-<h2>ROYYD</h2>
+                <h2>ROYYD</h2>
 
-<span>
-FINE CUSTOM TAILORING
-</span>
+                <span>FINE CUSTOM TAILORING</span>
 
-</div>
+            </div>
 
-</div>
+        </a>
 
-<nav>
-<ul class="nav-links">
-<li><a href="index.html">Home</a></li>
-<li><a href="Bespoke.html">Collections</a></li>
-<li><a href="contact.html">Contact</a></li>
-</ul>
-</nav>
+        <nav class="desktop-nav">
 
-</header>
+            <a href="index.html">Home</a>
 
+            <a href="Bespoke.html">Bespoke</a>
+
+            <a href="about.html">About</a>
+
+            <a href="contact.html">Contact</a>
+
+        </nav>
+
+        <div class="header-actions">
+
+            <a href="account.html" class="header-icon">
+                <i data-lucide="user"></i>
+            </a>
+
+            <a href="cart.html" class="header-icon cart-btn">
+
+                <i data-lucide="shopping-bag"></i>
+
+                <span id="cartCountBadge">0</span>
+
+            </a>
+
+            <div class="menu-toggle" id="menu-toggle">
+                ☰
+            </div>
+
+        </div>
+
+    </header>
 <!-- CART HERO -->
 
 <section class="cart-hero">
@@ -117,13 +140,87 @@ Proceed To Checkout
 
 <!-- FOOTER -->
 
-<footer class="footer">
 
-<h2>ROYYD</h2>
+<footer class="royyd-footer">
 
-<p>
-Fine Custom Tailoring For Modern Gentlemen.
-</p>
+    <div class="footer-top">
+
+        <div class="footer-brand">
+
+            <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD">
+
+            <h2>ROYYD</h2>
+
+            <p>
+                Fine Custom Tailoring crafted for the modern gentleman.
+                Precision. Elegance. Individuality.
+            </p>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Explore</h3>
+
+            <a href="index.html">Home</a>
+            <a href="Bespoke.html">Bespoke</a>
+            <a href="Bespoke.html">Collections</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Customer Care</h3>
+
+            <a href="#">Shipping Policy</a>
+            <a href="#">Returns & Exchanges</a>
+            <a href="#">Size Guide</a>
+            <a href="#">FAQ</a>
+
+        </div>
+
+        <div class="footer-column">
+
+            <h3>Contact</h3>
+
+            <p>Jaipur, Rajasthan</p>
+
+            <p>royyd29@gmail.com</p>
+
+            <p>+91 76888 88825</p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-newsletter">
+
+        <h3>Join The ROYYD Circle</h3>
+
+        <p>
+            Receive tailoring insights, new collections,
+            and exclusive consultations.
+        </p>
+
+        <div class="newsletter-box">
+
+            <input type="email"
+                   placeholder="Enter your email">
+
+            <button>Subscribe</button>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+
+        <p>
+            © 2026 ROYYD. All Rights Reserved.
+        </p>
+
+    </div>
 
 </footer>
 <script>
@@ -183,23 +280,7 @@ cartContainer.innerHTML += `
 ${product.title}
 </h2>
 
-${product.type === "Bespoke Custom" ? `
 
-<p class="cart-category bespoke-badge">
-
-Bespoke Custom
-
-</p>
-
-` : `
-
-<p class="cart-category">
-
-${product.type || "Ready To Wear"}
-
-</p>
-
-`}
 
 <p class="cart-price">
 ₹ ${product.price}
@@ -213,15 +294,8 @@ Size: ${product.size}
 
 ` : ""}
 
-${product.fit ? `
 
-<p class="cart-meta">
-Fit: ${product.fit}
-</p>
-
-` : ""}
-
-${product.type === "Bespoke Custom" && product.sizeType === "shirt" ? `
+${product.collar !== "—" ? `
 
 <div class="cart-custom-data">
 
@@ -356,6 +430,12 @@ location.reload();
 
 });
 
+
+
 </script>
+<script>
+lucide.createIcons();
+</script>
+
 </body>
 </html>
