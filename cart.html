@@ -223,6 +223,8 @@ Proceed To Checkout
     </div>
 
 </footer>
+
+
 <script>
 
 const cartContainer = document.getElementById('cart-items');
@@ -295,7 +297,7 @@ Size: ${product.size}
 ` : ""}
 
 
-${product.collar !== "—" ? `
+${product.sizeType === "shirt" ? `
 
 <div class="cart-custom-data">
 
@@ -328,18 +330,65 @@ ${product.collar !== "—" ? `
 
 ` : ""}
 
-${product.type === "Bespoke Custom" && product.sizeType === "trouser" ? `
+
+${product.sizeType === "trouser" ? `
 
 <div class="cart-custom-data">
 
 <div class="custom-row">
-<span>Trouser</span>
-<p>Custom Tailored</p>
+<span>Pocket</span>
+<p>${product.pocket}</p>
+</div>
+
+<div class="custom-row">
+<span>Pleat</span>
+<p>${product.pleat}</p>
+</div>
+
+<div class="custom-row">
+<span>Waist</span>
+<p>${product.waist}</p>
+</div>
+
+<div class="custom-row">
+<span>Bottom</span>
+<p>${product.bottom}</p>
 </div>
 
 </div>
 
 ` : ""}
+
+
+${product.sizeType === "full" ? `
+
+<div class="cart-custom-data">
+
+<div class="custom-row">
+<span>Pocket</span>
+<p>${product.pocket}</p>
+</div>
+
+<div class="custom-row">
+<span>Lapel</span>
+<p>${product.lapel}</p>
+</div>
+
+<div class="custom-row">
+<span>Configuration</span>
+<p>${product.configuration}</p>
+</div>
+
+<div class="custom-row">
+<span>Vent</span>
+<p>${product.vent}</p>
+</div>
+
+</div>
+
+` : ""}
+
+
 
 <div class="cart-actions">
 

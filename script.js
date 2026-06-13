@@ -405,25 +405,39 @@ if (generateFitBtn) {
 
             // STATUS TEXTS
 
-            if (progress > 20) {
-
-                overlayStatus.innerText =
-                    "Analyzing shoulder posture";
-
+            if (progress > 10) {
+                aiFitStatus.innerText =
+                    "Initializing ROYYD Precision Engine";
             }
 
-            if (progress > 45) {
+            if (progress > 25) {
+                aiFitStatus.innerText =
+                    "Scanning Body Geometry";
+            }
 
-                overlayStatus.innerText =
-                    "Generating body profile";
+            if (progress > 40) {
+                aiFitStatus.innerText =
+                    "Analyzing Posture & Proportions";
+            }
 
+            if (progress > 55) {
+                aiFitStatus.innerText =
+                    "Calculating Bespoke Measurements";
             }
 
             if (progress > 70) {
+                aiFitStatus.innerText =
+                    "Building Your Tailoring Blueprint";
+            }
 
-                overlayStatus.innerText =
-                    "Calculating ideal tailoring fit";
+            if (progress > 85) {
+                aiFitStatus.innerText =
+                    "Creating Your Signature Fit Profile";
+            }
 
+            if (progress > 95) {
+                aiFitStatus.innerText =
+                    "Finalizing Luxury Garment Specifications";
             }
 
             if (progress >= 100) {
@@ -587,6 +601,32 @@ if (calculateBtn) {
             document.getElementById("thighFitSection")
                 ?.querySelector(".active-body p")
                 ?.innerText || "";
+
+        const sizeType =
+            localStorage.getItem("productSizeType");
+
+
+        if (sizeType === "shirt") {
+
+            if (
+                !upperBody ||
+                !hipShape ||
+                !activeHeight ||
+                !activeShirtSize ||
+                !shoulderType ||
+                !preferredFit
+            ) {
+
+                alert(
+                    "Please complete all size questions."
+                );
+
+                console.log("VALIDATION STOPPED");
+
+                return;
+            }
+
+        }
 
         const savedSizes = {
 
@@ -843,28 +883,29 @@ if (currentProduct) {
     if (fabricName) {
 
         fabricName.innerText =
-            currentProduct.fabric;
+            currentProduct.fabric || "Premium Fabric";
 
     }
 
     if (fabricWeight) {
 
         fabricWeight.innerText =
-            currentProduct.weight;
+            currentProduct.weight || "Luxury Weight";
 
     }
 
     if (fabricOrigin) {
 
         fabricOrigin.innerText =
-            currentProduct.origin;
+            currentProduct.origin || "Imported";
 
     }
 
     if (fabricDescription) {
 
         fabricDescription.innerText =
-            currentProduct.description;
+            currentProduct.description ||
+            "Crafted using premium luxury fabrics with exceptional tailoring standards.";
 
     }
 
@@ -962,7 +1003,7 @@ if (thumb3Element) {
         savedThumb3 || savedImage
     );
 }
-    
+
 // PASS PRODUCT DATA TO SIZE GUIDE
 
 const sizeGuideBtn =
@@ -1282,13 +1323,30 @@ if (customCartBtn) {
             buttons:
                 localStorage.getItem("buttonResult") || "—",
 
+            pleat:
+                localStorage.getItem("pleatResult") || "—",
+
+            waist:
+                localStorage.getItem("waistResult") || "—",
+
+            bottom:
+                localStorage.getItem("bottomResult") || "—",
+
+            lapel:
+                localStorage.getItem("lapelResult") || "—",
+
+            configuration:
+                localStorage.getItem("configurationResult") || "—",
+
+            vent:
+                localStorage.getItem("ventResult") || "—",
+
             fit:
                 savedSizes.preferredFit || "—",
 
             quantity: 1
 
         };
-
 
 
         let cart =
@@ -1886,6 +1944,84 @@ if (saveDesignBtn) {
         const button =
             document.querySelector('[data-type="button"].active-style');
 
+        const sizeType =
+            localStorage.getItem("productSizeType");
+
+        if (sizeType === "shirt") {
+
+            if (
+                !collar ||
+                !cuff ||
+                !sleeve ||
+                !pocket ||
+                !button
+            ) {
+
+                alert(
+                    "Please select all customization options."
+                );
+
+                return;
+            }
+
+        }
+
+
+        const pleat =
+            document.querySelector('[data-type="pleat"].active-style');
+
+        const waist =
+            document.querySelector('[data-type="Waist"].active-style');
+
+        const bottom =
+            document.querySelector('[data-type="bottom"].active-style');
+
+        if (sizeType === "trouser") {
+
+            if (
+                !pocket ||
+                !pleat ||
+                !waist ||
+                !bottom
+            ) {
+
+                alert(
+                    "Please select all customization options."
+                );
+
+                return;
+            }
+
+        }
+
+
+        const lapel =
+            document.querySelector('[data-type="lapel"].active-style');
+
+        const configuration =
+            document.querySelector('[data-type="configuration"].active-style');
+
+        const vent =
+            document.querySelector('[data-type="vent"].active-style');
+
+        if (sizeType === "full") {
+
+            if (
+                !pocket ||
+                !lapel ||
+                !configuration ||
+                !vent
+            ) {
+
+                alert(
+                    "Please select all customization options."
+                );
+
+                return;
+            }
+
+        }
+
         localStorage.setItem(
             "collarResult",
             collar ? collar.dataset.name : "Not Selected"
@@ -1909,6 +2045,36 @@ if (saveDesignBtn) {
         localStorage.setItem(
             "buttonResult",
             button ? button.dataset.name : "Not Selected"
+        );
+
+        localStorage.setItem(
+            "pleatResult",
+            pleat ? pleat.dataset.name : "Not Selected"
+        );
+
+        localStorage.setItem(
+            "waistResult",
+            waist ? waist.dataset.name : "Not Selected"
+        );
+
+        localStorage.setItem(
+            "bottomResult",
+            bottom ? bottom.dataset.name : "Not Selected"
+        );
+
+        localStorage.setItem(
+            "lapelResult",
+            lapel ? lapel.dataset.name : "Not Selected"
+        );
+
+        localStorage.setItem(
+            "configurationResult",
+            configuration ? configuration.dataset.name : "Not Selected"
+        );
+
+        localStorage.setItem(
+            "ventResult",
+            vent ? vent.dataset.name : "Not Selected"
         );
 
         document

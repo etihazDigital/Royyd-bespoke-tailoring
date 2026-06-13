@@ -139,7 +139,7 @@
 
         <!-- HEIGHT -->
 
-       <div class="size-section" id="heightSection">
+        <div class="size-section" id="heightSection">
             <div class="section-top">
 
                 <h3>Select Height</h3>
@@ -456,11 +456,9 @@
 
             </div>
 
-            <a href="ai-fit-loading.html" id="startSizeAI">
-
+            <button id="startSizeAI">
                 Calculate Size
-
-            </a>
+            </button>
         </div>
 
     </section>
@@ -507,31 +505,31 @@
     </div>
 
 
-<script>
+    <script>
 
-const productType =
-    localStorage.getItem("productSizeType");
+        const productType =
+            localStorage.getItem("productSizeType");
 
-if(productType === "shirt"){
+        if (productType === "shirt") {
 
-    document.getElementById("trouserSizeSection").style.display = "none";
-    document.getElementById("trouserLengthSection").style.display = "none";
-    document.getElementById("hipFitSection").style.display = "none";
-    document.getElementById("thighFitSection").style.display = "none";
+            document.getElementById("trouserSizeSection").style.display = "none";
+            document.getElementById("trouserLengthSection").style.display = "none";
+            document.getElementById("hipFitSection").style.display = "none";
+            document.getElementById("thighFitSection").style.display = "none";
 
-}
+        }
 
-else if(productType === "trouser"){
+        else if (productType === "trouser") {
 
-    document.getElementById("upperBodySection").style.display = "none";
-    document.getElementById("shirtHipSection").style.display = "none";
-    document.getElementById("shirtSizeSection").style.display = "none";
-    document.getElementById("shoulderSection").style.display = "none";
-    document.getElementById("preferredFitSection").style.display = "none";
+            document.getElementById("upperBodySection").style.display = "none";
+            document.getElementById("shirtHipSection").style.display = "none";
+            document.getElementById("shirtSizeSection").style.display = "none";
+            document.getElementById("shoulderSection").style.display = "none";
+            document.getElementById("preferredFitSection").style.display = "none";
 
-}
+        }
 
-</script>
+    </script>
 
 
     <script src="script.js"></script>
