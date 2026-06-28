@@ -12,7 +12,7 @@ async function getProducts() {
 
         const response =
             await fetch(
-                "http://localhost:3000/api/products"
+                "https://royyd-backend.onrender.com/api/products"
             );
 
         const data =
