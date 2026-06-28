@@ -311,10 +311,12 @@ document.getElementById("checkoutSubtotal")
 document.getElementById("checkoutTotal")
 .innerText = "₹ " + total;
 
+
+
 const placeOrderBtn =
 document.getElementById("placeOrderBtn");
 
-placeOrderBtn.addEventListener("click", () => {
+placeOrderBtn.addEventListener("click", async () => {
 
 const inputs =
 document.querySelectorAll(
@@ -421,8 +423,67 @@ JSON.stringify(existingOrders)
 
 // REDIRECT
 
-window.location.href =
-"success.html";
+console.log(
+"Checkout button clicked"
+);
+
+const shopifyCheckoutUrl =
+localStorage.getItem(
+"shopifyCheckoutUrl"
+);
+
+console.log(
+"SHOPIFY URL:",
+shopifyCheckoutUrl
+);
+
+if(shopifyCheckoutUrl){
+
+const shirtSizes =
+JSON.parse(localStorage.getItem("shirtSizes"));
+
+const trouserSizes =
+JSON.parse(localStorage.getItem("trouserSizes"));
+
+const suitSizes =
+JSON.parse(localStorage.getItem("suitSizes"));
+
+await fetch("http://localhost:3000/api/save-order-data",{
+
+    method:"POST",
+
+    headers:{
+        "Content-Type":"application/json"
+    },
+
+    body:JSON.stringify({
+
+        cartId:localStorage.getItem("shopifyCartId"),
+
+        cart:cart,
+
+        shirtSizes:JSON.parse(localStorage.getItem("shirtSizes")),
+
+        trouserSizes:JSON.parse(localStorage.getItem("trouserSizes")),
+
+        suitSizes:JSON.parse(localStorage.getItem("suitSizes")),
+
+        address:savedAddress
+
+    })
+
+});
+
+window.location.href = shopifyCheckoutUrl;
+
+}
+else{
+
+alert(
+"Shopify checkout not found"
+);
+
+}
 
 });
 

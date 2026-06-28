@@ -86,8 +86,7 @@ Already Have Account?
 
 <script type="module">
 
-import { app }
-
+import { app, db }
 from "./firebase.js";
 
 import {
@@ -99,6 +98,16 @@ createUserWithEmailAndPassword
 }
 
 from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+
+import {
+
+doc,
+
+setDoc
+
+}
+
+from "https://www.gstatic.com/firebasejs/12.13.0/firebase-firestore.js";
 
 const auth =
 getAuth(app);
@@ -152,33 +161,55 @@ password
 
 )
 
-.then((userCredential) => {
+.then(async (userCredential) => {
 
 const user =
 userCredential.user;
 
-localStorage.setItem(
+await setDoc(
 
-"royydCurrentUser",
+doc(db, "customers", user.uid),
 
-JSON.stringify({
+{
 
-name,
+name: name,
 
-phone,
+phone: phone,
 
-email,
+email: email,
 
-uid:user.uid
+uid: user.uid,
 
-})
+createdAt: new Date().toISOString()
+
+}
 
 );
 
+
+
 alert("Account Created Successfully");
 
-window.location.href =
-"account.html";
+const returnUrl =
+    localStorage.getItem(
+        "royydReturnUrl"
+    );
+
+if (returnUrl) {
+
+    localStorage.removeItem(
+        "royydReturnUrl"
+    );
+
+    window.location.href =
+        returnUrl;
+
+} else {
+
+    window.location.href =
+        "account.html";
+
+}
 
 })
 

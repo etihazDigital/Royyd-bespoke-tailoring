@@ -144,23 +144,32 @@ const user =
 userCredential.user;
 
 localStorage.setItem(
-
-"royydCurrentUser",
-
-JSON.stringify({
-
-email,
-
-uid:user.uid
-
-})
-
+    "royydCurrentUser",
+    JSON.stringify(user)
 );
 
 alert("Login Successful");
 
-window.location.href =
-"account.html";
+const returnUrl =
+    localStorage.getItem(
+        "royydReturnUrl"
+    );
+
+if (returnUrl) {
+
+    localStorage.removeItem(
+        "royydReturnUrl"
+    );
+
+    window.location.href =
+        returnUrl;
+
+} else {
+
+    window.location.href =
+        "account.html";
+
+}
 
 })
 

@@ -25,9 +25,7 @@
 
 
 </head>
-<script>
-    lucide.createIcons();
-</script>
+
 
 <body>
 
@@ -222,104 +220,123 @@
 
     <footer class="royyd-footer">
 
-    <div class="footer-top">
+        <div class="footer-top">
 
-        <div class="footer-brand">
+            <div class="footer-brand">
 
-            <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD">
+                <img src="https://i.postimg.cc/jjcxvp6f/IMG-20260511-154741.jpg" alt="ROYYD">
 
-            <h2>ROYYD</h2>
+                <h2>ROYYD</h2>
+
+                <p>
+                    Fine Custom Tailoring crafted for the modern gentleman.
+                    Precision. Elegance. Individuality.
+                </p>
+
+            </div>
+
+            <div class="footer-column">
+
+                <h3>Explore</h3>
+
+                <a href="index.html">Home</a>
+                <a href="Bespoke.html">Bespoke</a>
+                <a href="Bespoke.html">Collections</a>
+                <a href="contact.html">Contact</a>
+
+            </div>
+
+            <div class="footer-column">
+
+                <h3>Customer Care</h3>
+
+                <a href="#">Shipping Policy</a>
+                <a href="#">Returns & Exchanges</a>
+                <a href="#">Size Guide</a>
+                <a href="#">FAQ</a>
+
+            </div>
+
+            <div class="footer-column">
+
+                <h3>Contact</h3>
+
+                <p>Jaipur, Rajasthan</p>
+
+                <p>royyd29@gmail.com</p>
+
+                <p>+91 76888 88825</p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-newsletter">
+
+            <h3>Join The ROYYD Circle</h3>
 
             <p>
-                Fine Custom Tailoring crafted for the modern gentleman.
-                Precision. Elegance. Individuality.
+                Receive tailoring insights, new collections,
+                and exclusive consultations.
+            </p>
+
+            <div class="newsletter-box">
+
+                <input type="email" placeholder="Enter your email">
+
+                <button>Subscribe</button>
+
+            </div>
+
+        </div>
+
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 ROYYD. All Rights Reserved.
             </p>
 
         </div>
 
-        <div class="footer-column">
+    </footer>
 
-            <h3>Explore</h3>
 
-            <a href="index.html">Home</a>
-            <a href="Bespoke.html">Bespoke</a>
-            <a href="Bespoke.html">Collections</a>
-            <a href="contact.html">Contact</a>
 
-        </div>
+    <script type="module">
 
-        <div class="footer-column">
+        import { app }
+            from "./firebase.js";
 
-            <h3>Customer Care</h3>
+        import {
 
-            <a href="#">Shipping Policy</a>
-            <a href="#">Returns & Exchanges</a>
-            <a href="#">Size Guide</a>
-            <a href="#">FAQ</a>
-
-        </div>
-
-        <div class="footer-column">
-
-            <h3>Contact</h3>
-
-            <p>Jaipur, Rajasthan</p>
-
-            <p>royyd29@gmail.com</p>
-
-            <p>+91 76888 88825</p>
-
-        </div>
-
-    </div>
-
-    <div class="footer-newsletter">
-
-        <h3>Join The ROYYD Circle</h3>
-
-        <p>
-            Receive tailoring insights, new collections,
-            and exclusive consultations.
-        </p>
-
-        <div class="newsletter-box">
-
-            <input type="email"
-                   placeholder="Enter your email">
-
-            <button>Subscribe</button>
-
-        </div>
-
-    </div>
-
-    <div class="footer-bottom">
-
-        <p>
-            © 2026 ROYYD. All Rights Reserved.
-        </p>
-
-    </div>
-
-</footer>
-
-    <script>
-
-        const currentUser =
-
-            JSON.parse(
-                localStorage.getItem("royydCurrentUser")
-            );
-
-        if (!currentUser) {
-
-            window.location.href =
-                "login.html";
+            getAuth,
+            onAuthStateChanged,
+            signOut
 
         }
 
+            from "https://www.gstatic.com/firebasejs/12.13.0/firebase-auth.js";
+
+        const auth =
+            getAuth(app);
+
+        onAuthStateChanged(auth, (user) => {
+
+            if (!user) {
+
+                window.location.href =
+                    "login.html";
+
+            }
+
+        });
+
+
         const ordersContainer =
             document.getElementById("ordersContainer");
+
+        const allOrdersContainer =
+            document.getElementById("allOrdersContainer");
 
         const orders =
             JSON.parse(
@@ -358,7 +375,16 @@ Start Shopping
 
             orders.reverse().forEach((order) => {
 
+                if (allOrdersContainer) {
+
+                    allOrdersContainer.innerHTML =
+                        ordersContainer.innerHTML;
+
+                }
+
                 ordersContainer.innerHTML += `
+
+                
 
 <div class="order-item">
 
@@ -435,9 +461,9 @@ ${order.status}
         const logoutBtn =
             document.getElementById("logoutBtn");
 
-        logoutBtn.addEventListener("click", () => {
+        logoutBtn.addEventListener("click", async () => {
 
-            localStorage.removeItem("royydCurrentUser");
+            await signOut(auth);
 
             window.location.href =
                 "login.html";
@@ -448,55 +474,116 @@ ${order.status}
             document.getElementById(
                 "savedSizesContainer"
             );
-
-        const savedSizes =
+        const shirtSizes =
             JSON.parse(
-                localStorage.getItem("royydSavedSizes")
+                localStorage.getItem("royydShirtSizes")
+            );
+
+        const trouserSizes =
+            JSON.parse(
+                localStorage.getItem("royydTrouserSizes")
+            );
+
+        const suitSizes =
+            JSON.parse(
+                localStorage.getItem("royydSuitSizes")
             );
 
         if (savedSizesContainer) {
 
-            if (savedSizes) {
+            savedSizesContainer.innerHTML = "";
 
-                savedSizesContainer.innerHTML = `
+            if (shirtSizes) {
+
+                savedSizesContainer.innerHTML += `
 
 <div class="saved-size-card">
 
-<p>
-Upper Body:
-<span>${savedSizes.upperBody}</span>
-</p>
+<h3>Shirt Measurements</h3>
 
-<p>
-Lower Body:
-<span>${savedSizes.lowerBody}</span>
-</p>
+<p>Upper Body:
+<span>${shirtSizes.upperBody || "—"}</span></p>
 
-<p>
-Height:
-<span>${savedSizes.height}</span>
-</p>
+<p>Hip Shape:
+<span>${shirtSizes.hipShape || "—"}</span></p>
 
-<p>
-Shirt Size:
-<span>${savedSizes.shirtSize}</span>
-</p>
+<p>Height:
+<span>${shirtSizes.height || "—"}</span></p>
 
-<p>
-Shoulder:
-<span>${savedSizes.shoulderType}</span>
-</p>
+<p>Shirt Size:
+<span>${shirtSizes.shirtSize || "—"}</span></p>
 
-<p>
-Preferred Fit:
-<span>${savedSizes.preferredFit}</span>
-</p>
+<p>Shoulder:
+<span>${shirtSizes.shoulderType || "—"}</span></p>
+
+<p>Preferred Fit:
+<span>${shirtSizes.preferredFit || "—"}</span></p>
 
 </div>
 
 `;
 
-            } else {
+            }
+
+            if (trouserSizes) {
+
+                savedSizesContainer.innerHTML += `
+
+<div class="saved-size-card">
+
+<h3>Trouser Measurements</h3>
+
+<p>Waist:
+<span>${trouserSizes.trouserWaist || "—"}</span></p>
+
+<p>Length:
+<span>${trouserSizes.trouserLength || "—"}</span></p>
+
+<p>Hip Fit:
+<span>${trouserSizes.hipFit || "—"}</span></p>
+
+<p>Thigh Fit:
+<span>${trouserSizes.thighFit || "—"}</span></p>
+
+</div>
+
+`;
+
+            }
+
+            if (suitSizes) {
+
+                savedSizesContainer.innerHTML += `
+
+<div class="saved-size-card">
+
+<h3>Suit Measurements</h3>
+
+<p>Upper Body:
+<span>${suitSizes.upperBody || "—"}</span></p>
+
+<p>Height:
+<span>${suitSizes.height || "—"}</span></p>
+
+<p>Shoulder:
+<span>${suitSizes.shoulderType || "—"}</span></p>
+
+<p>Preferred Fit:
+<span>${suitSizes.preferredFit || "—"}</span></p>
+
+<p>Waist:
+<span>${suitSizes.trouserWaist || "—"}</span></p>
+
+<p>Length:
+<span>${suitSizes.trouserLength || "—"}</span></p>
+
+</div>
+
+`;
+
+            }
+
+            if (!shirtSizes && !trouserSizes && !suitSizes) {
 
                 savedSizesContainer.innerHTML = `
 
@@ -511,7 +598,6 @@ No saved measurements yet.
             }
 
         }
-
         const savedAddressContainer =
             document.getElementById(
                 "savedAddressContainer"
@@ -588,8 +674,8 @@ No saved address yet.
     </script>
 
     <script>
-lucide.createIcons();
-</script>
+        lucide.createIcons();
+    </script>
 </body>
 
 </html>

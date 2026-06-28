@@ -224,7 +224,7 @@ Proceed To Checkout
 
 </footer>
 
-
+<script src="js/shopify.js"></script>
 <script>
 
 const cartContainer = document.getElementById('cart-items');
@@ -429,16 +429,34 @@ document.querySelectorAll('.plus-btn');
 
 plusButtons.forEach(button => {
 
-button.addEventListener('click', () => {
+button.addEventListener('click', async () => {
 
 const index =
-button.dataset.index;
+Number(button.dataset.index);
 
-cart[index].quantity++;
+const product =
+cart[index];
+
+const newQuantity =
+product.quantity + 1;
+
+await updateShopifyCartQuantity(
+
+product.shopifyLineId,
+
+newQuantity
+
+);
+
+product.quantity =
+newQuantity;
 
 localStorage.setItem(
-'royydCart',
+
+"royydCart",
+
 JSON.stringify(cart)
+
 );
 
 location.reload();
@@ -453,23 +471,58 @@ document.querySelectorAll('.minus-btn');
 
 minusButtons.forEach(button => {
 
-button.addEventListener('click', () => {
+button.addEventListener('click', async () => {
 
 const index =
-button.dataset.index;
+Number(button.dataset.index);
 
 if(cart[index].quantity > 1){
 
-cart[index].quantity--;
+const newQuantity =
+cart[index].quantity - 1;
 
-} else {
+await updateShopifyCartQuantity(
 
-cart.splice(index, 1);
+cart[index].shopifyLineId,
+
+newQuantity
+
+);
+
+cart[index].quantity =
+newQuantity;
+
+}
+else{
+
+const lineId =
+cart[index].shopifyLineId;
+
+console.log(
+"REMOVING SHOPIFY LINE:",
+lineId
+);
+
+await removeFromShopifyCart(lineId);
+
+console.log(
+"SHOPIFY REMOVE FINISHED"
+);
+
+cart.splice(index,1);
+
+
+
+localStorage.setItem(
+"royydCart",
+JSON.stringify(cart)
+);
+
 
 }
 
 localStorage.setItem(
-'royydCart',
+"royydCart",
 JSON.stringify(cart)
 );
 
@@ -478,7 +531,6 @@ location.reload();
 });
 
 });
-
 
 
 </script>

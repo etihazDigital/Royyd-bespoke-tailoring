@@ -1,3 +1,27 @@
+function showToast(message) {
+
+    const toast =
+        document.getElementById("royydToast");
+
+    const text =
+        document.getElementById("royydToastText");
+
+    if (!toast || !text) return;
+
+    text.innerText = message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove("show");
+
+    }, 3000);
+
+}
+
+
+
 const menuToggle =
     document.getElementById("menu-toggle");
 
@@ -630,32 +654,54 @@ if (calculateBtn) {
 
         const savedSizes = {
 
-            upperBody,
+    upperBody,
 
-            hipShape,
+    hipShape,
 
-            height: activeHeight,
+    height: activeHeight,
 
-            shirtSize: activeShirtSize,
+    shirtSize: activeShirtSize,
 
-            shoulderType,
+    shoulderType,
 
-            preferredFit,
+    preferredFit,
 
-            trouserWaist: activeTrouserWaist,
+    trouserWaist: activeTrouserWaist,
 
-            trouserLength: activeTrouserLength,
+    trouserLength: activeTrouserLength,
 
-            hipFit: activeHipFit,
+    hipFit: activeHipFit,
 
-            thighFit: activeThighFit
+    thighFit: activeThighFit
 
-        };
+};
 
-        localStorage.setItem(
-            "royydSavedSizes",
-            JSON.stringify(savedSizes)
-        );
+if (sizeType === "shirt") {
+
+    localStorage.setItem(
+        "royydShirtSizes",
+        JSON.stringify(savedSizes)
+    );
+
+}
+
+else if (sizeType === "trouser") {
+
+    localStorage.setItem(
+        "royydTrouserSizes",
+        JSON.stringify(savedSizes)
+    );
+
+}
+
+else if (sizeType === "full") {
+
+    localStorage.setItem(
+        "royydSuitSizes",
+        JSON.stringify(savedSizes)
+    );
+
+}
 
         const currentParams =
             window.location.search;
@@ -1011,9 +1057,36 @@ const sizeGuideBtn =
 
 if (sizeGuideBtn) {
 
-    sizeGuideBtn.href =
-        "size-guide.html" +
-        window.location.search;
+    sizeGuideBtn.addEventListener("click", (e) => {
+
+        const currentUser =
+            localStorage.getItem("royydCurrentUser");
+
+        if (!currentUser) {
+
+            localStorage.setItem(
+                "royydReturnUrl",
+                window.location.href
+            );
+
+            showToast("Please Login First");
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "login.html";
+
+            }, 1200);
+
+            return;
+
+        }
+
+        window.location.href =
+            "size-guide.html" +
+            window.location.search;
+
+    });
 
 }
 
@@ -1282,7 +1355,37 @@ const customCartBtn =
 
 if (customCartBtn) {
 
-    customCartBtn.addEventListener("click", () => {
+    customCartBtn.addEventListener(
+"click",
+() => {
+
+console.log(
+"ADD TO CART CLICKED"
+);
+
+
+        const currentUser =
+            localStorage.getItem("royydCurrentUser");
+
+        if (!currentUser) {
+
+            localStorage.setItem(
+                "royydReturnUrl",
+                window.location.href
+            );
+
+            showToast("Please Login First");
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "login.html";
+
+            }, 1200);
+
+            return;
+
+        }
 
         const savedSizes =
             JSON.parse(
@@ -1349,18 +1452,77 @@ if (customCartBtn) {
         };
 
 
-        let cart =
-            JSON.parse(localStorage.getItem("royydCart")) || [];
+        
 
-        cart.push(customProduct);
 
-        localStorage.setItem(
-            "royydCart",
-            JSON.stringify(cart)
-        );
+        
 
-        alert("Custom Bespoke Product Added");
+const variantId =
+localStorage.getItem(
+    "shopifyVariantId"
+);
 
+console.log(
+    "ADDING TO SHOPIFY:",
+    variantId
+);
+
+console.log(
+"ADD TO CART CLICKED"
+);
+
+console.log(
+"VARIANT ID:",
+variantId
+);
+
+addToShopifyCart(variantId)
+.then((shopifyLineId) => {
+
+    customProduct.shopifyLineId =
+        shopifyLineId;
+
+    let cart =
+        JSON.parse(
+            localStorage.getItem("royydCart")
+        ) || [];
+
+    const existing = cart.find(item =>
+
+    item.shopifyLineId === shopifyLineId
+
+);
+
+if(existing){
+
+    existing.quantity++;
+
+}else{
+
+    cart.push(customProduct);
+
+}
+
+    localStorage.setItem(
+        "royydCart",
+        JSON.stringify(cart)
+    );
+
+    alert(
+        "Custom Bespoke Product Added To Cart"
+    );
+
+})
+
+
+.catch(error => {
+
+    console.error(
+        "SHOPIFY ERROR:",
+        error
+    );
+
+});
     });
 
 }
@@ -1489,6 +1651,15 @@ if (accountNavLink) {
 const savedSizeType =
     localStorage.getItem("productSizeType");
 
+
+
+
+
+console.log(
+    "SAVED SIZE TYPE:",
+    savedSizeType
+);
+
 const customizationTitle =
     document.getElementById("customizationTitle");
 
@@ -1583,314 +1754,424 @@ const ventSection =
 
 
 
+function updateCustomizationDrawer() {
+
+    console.log(
+        "DRAWER UPDATE RUNNING",
+        localStorage.getItem("productSizeType")
+    );
+
+    const savedSizeType =
+        localStorage.getItem("productSizeType");
 
 
-// CUSTOMIZATION DRAWER DYNAMIC
+    const customizationTitle =
+        document.getElementById("customizationTitle");
 
-if (savedSizeType === "trouser") {
+    if (customizationTitle) {
 
-    if (collarSection) {
-        collarSection.style.display = "none";
+        if (savedSizeType === "shirt") {
+            customizationTitle.innerText =
+                "Customize Your Shirt";
+        }
+
+        if (savedSizeType === "trouser") {
+            customizationTitle.innerText =
+                "Customize Your Trouser";
+        }
+
+        if (savedSizeType === "full") {
+            customizationTitle.innerText =
+                "Customize Your Suit";
+        }
     }
 
-    if (cuffSection) {
-        cuffSection.style.display = "none";
-    }
+    // RESET EVERYTHING FIRST
 
-    if (sleeveSection) {
-        sleeveSection.style.display = "none";
-    }
+    [
+        collarSection,
+        cuffSection,
+        sleeveSection,
+        pocketSection,
+        buttonSection,
+        pleatSection,
+        waistSection,
+        bottomSection,
+        lapelSection,
+        configurationSection,
+        ventSection
+    ].forEach(section => {
 
-    if (buttonSection) {
-        buttonSection.style.display = "none";
-    }
+        if (section) {
+            section.style.display = "";
+        }
 
+    });
 
-
-}
-
-if (savedSizeType === "full") {
-
-    if (collarSection) {
-        collarSection.style.display = "none";
-    }
-
-    if (cuffSection) {
-        cuffSection.style.display = "none";
-    }
-
-    if (sleeveSection) {
-        sleeveSection.style.display = "none";
-    }
-
-}
+    console.log("COLLAR:", collarSection?.style.display);
+    console.log("CUFF:", cuffSection?.style.display);
+    console.log("SLEEVE:", sleeveSection?.style.display);
+    console.log("PLEAT:", pleatSection?.style.display);
+    console.log("WAIST:", waistSection?.style.display);
+    console.log("BOTTOM:", bottomSection?.style.display);
 
 
-// SHIRT
+    // CUSTOMIZATION DRAWER DYNAMIC
 
-if (savedSizeType === "shirt") {
+    if (savedSizeType === "trouser") {
 
-    if (trouserSizeSection) {
+        if (collarSection) {
+            collarSection.style.display = "none";
+        }
 
-        trouserSizeSection.style.display =
-            "none";
+        if (cuffSection) {
+            cuffSection.style.display = "none";
+        }
 
-    }
+        if (sleeveSection) {
+            sleeveSection.style.display = "none";
+        }
 
-    if (trouserLengthSection) {
+        if (buttonSection) {
+            buttonSection.style.display = "none";
+        }
 
-        trouserLengthSection.style.display =
-            "none";
 
-    }
-
-    if (hipFitSection) {
-
-        hipFitSection.style.display =
-            "none";
 
     }
 
-    if (thighFitSection) {
 
-        thighFitSection.style.display =
-            "none";
+
+    if (savedSizeType === "full") {
+
+        if (collarSection) {
+            collarSection.style.display = "none";
+        }
+
+        if (cuffSection) {
+            cuffSection.style.display = "none";
+        }
+
+        if (sleeveSection) {
+            sleeveSection.style.display = "none";
+        }
 
     }
 
-}
 
+    // SHIRT
 
-// TROUSER
+    if (savedSizeType === "shirt") {
 
-if (savedSizeType === "trouser") {
+        if (trouserSizeSection) {
+
+            trouserSizeSection.style.display =
+                "none";
+
+        }
+
+        if (trouserLengthSection) {
+
+            trouserLengthSection.style.display =
+                "none";
+
+        }
+
+        if (hipFitSection) {
+
+            hipFitSection.style.display =
+                "none";
+
+        }
+
+        if (thighFitSection) {
+
+            thighFitSection.style.display =
+                "none";
+
+        }
+
+    }
 
     if (shirtSizeSection) {
-
-        shirtSizeSection.style.display =
-            "none";
-
+        shirtSizeSection.style.display = "";
     }
 
     const upperBodySection =
         document.getElementById("upperBodySection");
 
     if (upperBodySection) {
-
-        upperBodySection.style.display =
-            "none";
-
+        upperBodySection.style.display = "";
     }
 
     const shoulderSection =
         document.getElementById("shoulderSection");
 
     if (shoulderSection) {
-
-        shoulderSection.style.display =
-            "none";
-
+        shoulderSection.style.display = "";
     }
 
     const preferredFitSection =
         document.getElementById("preferredFitSection");
 
     if (preferredFitSection) {
+        preferredFitSection.style.display = "";
+    }
+    // TROUSER
 
-        preferredFitSection.style.display =
-            "none";
+    if (savedSizeType === "trouser") {
+
+        if (shirtSizeSection) {
+
+            shirtSizeSection.style.display =
+                "none";
+
+        }
+
+        const upperBodySection =
+            document.getElementById("upperBodySection");
+
+        if (upperBodySection) {
+
+            upperBodySection.style.display =
+                "none";
+
+        }
+
+        const shoulderSection =
+            document.getElementById("shoulderSection");
+
+        if (shoulderSection) {
+
+            shoulderSection.style.display =
+                "none";
+
+        }
+
+        const preferredFitSection =
+            document.getElementById("preferredFitSection");
+
+        if (preferredFitSection) {
+
+            preferredFitSection.style.display =
+                "none";
+
+        }
+
+
 
     }
 
 
 
+
+
+    // SHIRT DRAWER
+
+    if (savedSizeType === "shirt") {
+
+        if (pleatSection) pleatSection.style.display = "none";
+        if (waistSection) waistSection.style.display = "none";
+        if (bottomSection) bottomSection.style.display = "none";
+
+        if (lapelSection) lapelSection.style.display = "none";
+        if (configurationSection) configurationSection.style.display = "none";
+        if (ventSection) ventSection.style.display = "none";
+
+    }
+
+
+    // TROUSER DRAWER
+
+    if (savedSizeType === "trouser") {
+
+        if (lapelSection) lapelSection.style.display = "none";
+        if (configurationSection) configurationSection.style.display = "none";
+        if (ventSection) ventSection.style.display = "none";
+
+    }
+
+
+    // SUIT / BLAZER DRAWER
+
+    if (savedSizeType === "full") {
+
+        if (collarSection) collarSection.style.display = "none";
+        if (cuffSection) cuffSection.style.display = "none";
+        if (sleeveSection) sleeveSection.style.display = "none";
+        if (buttonSection) buttonSection.style.display = "none";
+
+        if (pleatSection) pleatSection.style.display = "none";
+        if (waistSection) waistSection.style.display = "none";
+        if (bottomSection) bottomSection.style.display = "none";
+
+    }
+
+    const upperBodySummary =
+        document.getElementById("upperBodySummary");
+
+    const shoulderSummary =
+        document.getElementById("shoulderSummary");
+
+    const fitSummary =
+        document.getElementById("fitSummary");
+
+    const shirtSizeSummary =
+        document.getElementById("shirtSizeSummary");
+
+    const trouserWaistSummary =
+        document.getElementById("trouserWaistSummary");
+
+    const trouserLengthSummary =
+        document.getElementById("trouserLengthSummary");
+
+    const hipFitSummary =
+        document.getElementById("hipFitSummary");
+
+    const thighFitSummary =
+        document.getElementById("thighFitSummary");
+
+    const collarSummary =
+        document.getElementById("collarSummary");
+
+    const cuffSummary =
+        document.getElementById("cuffSummary");
+
+    const sleeveSummary =
+        document.getElementById("sleeveSummary");
+
+    const pocketSummary =
+        document.getElementById("pocketSummary");
+
+    const buttonSummary =
+        document.getElementById("buttonSummary");
+
+    // TROUSER SUMMARY
+
+    if (savedSizeType === "trouser") {
+
+        if (upperBodySummary) {
+
+            upperBodySummary.style.display =
+                "none";
+
+        }
+
+        if (shoulderSummary) {
+
+            shoulderSummary.style.display =
+                "none";
+
+        }
+
+        if (fitSummary) {
+
+            fitSummary.style.display =
+                "none";
+
+        }
+
+        if (shirtSizeSummary) {
+
+            shirtSizeSummary.style.display =
+                "none";
+
+        }
+
+        if (collarSummary) {
+
+            collarSummary.style.display =
+                "none";
+
+        }
+
+        if (cuffSummary) {
+
+            cuffSummary.style.display =
+                "none";
+
+        }
+
+        if (sleeveSummary) {
+
+            sleeveSummary.style.display =
+                "none";
+
+        }
+
+        if (pocketSummary) {
+
+            pocketSummary.style.display =
+                "none";
+
+        }
+
+        if (buttonSummary) {
+
+            buttonSummary.style.display =
+                "none";
+
+        }
+
+    }
+
+
+    // SHIRT SUMMARY
+
+    if (savedSizeType === "shirt") {
+
+        if (trouserWaistSummary) {
+
+            trouserWaistSummary.style.display =
+                "none";
+
+        }
+
+        if (trouserLengthSummary) {
+
+            trouserLengthSummary.style.display =
+                "none";
+
+        }
+
+        if (hipFitSummary) {
+
+            hipFitSummary.style.display =
+                "none";
+
+        }
+
+        if (thighFitSummary) {
+
+            thighFitSummary.style.display =
+                "none";
+
+        }
+
+    }
 }
 
+document.addEventListener(
+    "sizeTypeLoaded",
+    () => {
 
+        updateCustomizationDrawer();
 
-// SHIRT DRAWER
+        const drawer =
+            document.getElementById(
+                "customizerDrawer"
+            );
 
-if (savedSizeType === "shirt") {
+        if (drawer) {
 
-    if (pleatSection) pleatSection.style.display = "none";
-    if (waistSection) waistSection.style.display = "none";
-    if (bottomSection) bottomSection.style.display = "none";
+            drawer.offsetHeight;
 
-    if (lapelSection) lapelSection.style.display = "none";
-    if (configurationSection) configurationSection.style.display = "none";
-    if (ventSection) ventSection.style.display = "none";
-
-}
-
-
-// TROUSER DRAWER
-
-if (savedSizeType === "trouser") {
-
-    if (lapelSection) lapelSection.style.display = "none";
-    if (configurationSection) configurationSection.style.display = "none";
-    if (ventSection) ventSection.style.display = "none";
-
-}
-
-
-// SUIT / BLAZER DRAWER
-
-if (savedSizeType === "full") {
-
-    if (collarSection) collarSection.style.display = "none";
-    if (cuffSection) cuffSection.style.display = "none";
-    if (sleeveSection) sleeveSection.style.display = "none";
-    if (buttonSection) buttonSection.style.display = "none";
-
-    if (pleatSection) pleatSection.style.display = "none";
-    if (waistSection) waistSection.style.display = "none";
-    if (bottomSection) bottomSection.style.display = "none";
-
-}
-
-const upperBodySummary =
-    document.getElementById("upperBodySummary");
-
-const shoulderSummary =
-    document.getElementById("shoulderSummary");
-
-const fitSummary =
-    document.getElementById("fitSummary");
-
-const shirtSizeSummary =
-    document.getElementById("shirtSizeSummary");
-
-const trouserWaistSummary =
-    document.getElementById("trouserWaistSummary");
-
-const trouserLengthSummary =
-    document.getElementById("trouserLengthSummary");
-
-const hipFitSummary =
-    document.getElementById("hipFitSummary");
-
-const thighFitSummary =
-    document.getElementById("thighFitSummary");
-
-const collarSummary =
-    document.getElementById("collarSummary");
-
-const cuffSummary =
-    document.getElementById("cuffSummary");
-
-const sleeveSummary =
-    document.getElementById("sleeveSummary");
-
-const pocketSummary =
-    document.getElementById("pocketSummary");
-
-const buttonSummary =
-    document.getElementById("buttonSummary");
-
-// TROUSER SUMMARY
-
-if (savedSizeType === "trouser") {
-
-    if (upperBodySummary) {
-
-        upperBodySummary.style.display =
-            "none";
+        }
 
     }
+);
 
-    if (shoulderSummary) {
-
-        shoulderSummary.style.display =
-            "none";
-
-    }
-
-    if (fitSummary) {
-
-        fitSummary.style.display =
-            "none";
-
-    }
-
-    if (shirtSizeSummary) {
-
-        shirtSizeSummary.style.display =
-            "none";
-
-    }
-
-    if (collarSummary) {
-
-        collarSummary.style.display =
-            "none";
-
-    }
-
-    if (cuffSummary) {
-
-        cuffSummary.style.display =
-            "none";
-
-    }
-
-    if (sleeveSummary) {
-
-        sleeveSummary.style.display =
-            "none";
-
-    }
-
-    if (pocketSummary) {
-
-        pocketSummary.style.display =
-            "none";
-
-    }
-
-    if (buttonSummary) {
-
-        buttonSummary.style.display =
-            "none";
-
-    }
-
-}
-
-
-// SHIRT SUMMARY
-
-if (savedSizeType === "shirt") {
-
-    if (trouserWaistSummary) {
-
-        trouserWaistSummary.style.display =
-            "none";
-
-    }
-
-    if (trouserLengthSummary) {
-
-        trouserLengthSummary.style.display =
-            "none";
-
-    }
-
-    if (hipFitSummary) {
-
-        hipFitSummary.style.display =
-            "none";
-
-    }
-
-    if (thighFitSummary) {
-
-        thighFitSummary.style.display =
-            "none";
-
-    }
-
-}
+updateCustomizationDrawer();
 
 const openCustomizer =
     document.getElementById("openCustomizer");
@@ -1905,6 +2186,28 @@ if (openCustomizer) {
 
     openCustomizer.addEventListener("click", () => {
 
+        const currentUser =
+            localStorage.getItem("royydCurrentUser");
+
+        if (!currentUser) {
+
+            localStorage.setItem(
+                "royydReturnUrl",
+                window.location.href
+            );
+
+            showToast("Please Login First");
+
+            setTimeout(() => {
+
+                window.location.href =
+                    "login.html";
+
+            }, 1200);
+
+            return;
+
+        }
         customizerDrawer.classList.add("active");
 
     });
@@ -2119,56 +2422,56 @@ accordionHeaders.forEach(header => {
 
 });
 
-document.querySelectorAll(".home-product").forEach((card) => {
+// document.querySelectorAll(".home-product").forEach((card) => {
 
-    card.addEventListener("click", () => {
+//     card.addEventListener("click", () => {
 
-        localStorage.setItem(
-            "productCategory",
-            card.dataset.category
-        );
+//         localStorage.setItem(
+//             "productCategory",
+//             card.dataset.category
+//         );
 
-        localStorage.setItem(
-            "productSizeType",
-            card.dataset.sizeType
-        );
+//         localStorage.setItem(
+//             "productSizeType",
+//             card.dataset.sizeType
+//         );
 
-        localStorage.setItem(
-            "productTitle",
-            card.dataset.title
-        );
+//         localStorage.setItem(
+//             "productTitle",
+//             card.dataset.title
+//         );
 
-        localStorage.setItem(
-            "productPrice",
-            card.dataset.price
-        );
+//         localStorage.setItem(
+//             "productPrice",
+//             card.dataset.price
+//         );
 
-        localStorage.setItem(
-            "productImage",
-            card.dataset.image
-        );
+//         localStorage.setItem(
+//             "productImage",
+//             card.dataset.image
+//         );
 
-        localStorage.setItem(
-            "thumb1",
-            card.dataset.image
-        );
+//         localStorage.setItem(
+//             "thumb1",
+//             card.dataset.image
+//         );
 
-        localStorage.setItem(
-            "thumb2",
-            card.dataset.image
-        );
+//         localStorage.setItem(
+//             "thumb2",
+//             card.dataset.image
+//         );
 
-        localStorage.setItem(
-            "thumb3",
-            card.dataset.image
-        );
+//         localStorage.setItem(
+//             "thumb3",
+//             card.dataset.image
+//         );
 
-        window.location.href =
-            "product-customize.html";
+//         window.location.href =
+//             "product-customize.html";
 
-    });
+//     });
 
-});
+// });
 
 const completeLookSlider =
     document.getElementById("completeLookSlider");
@@ -2483,110 +2786,7 @@ if (completeLookSlider) {
 
 }
 
-const youMayLikeSlider =
-    document.getElementById("youMayLikeSlider");
 
-if (youMayLikeSlider) {
-
-    const products = [
-
-        {
-            title: "Royal Linen Shirt",
-            price: "3490",
-            image: "https://i.postimg.cc/8cgGjrfY/download-(9).jpg",
-            category: "shirt",
-            sizeType: "shirt"
-        },
-
-        {
-            title: "Executive White Shirt",
-            price: "3490",
-            image: "https://i.postimg.cc/hG7FmWQ7/5713554e5f26e1d286810da1fae39f64.jpg",
-            category: "shirt",
-            sizeType: "shirt"
-        },
-
-        {
-            title: "Noble Straight Trouser",
-            price: "3490",
-            image: "https://i.postimg.cc/7ZYvPHqh/IMG-20260505-WA0032.jpg",
-            category: "trouser",
-            sizeType: "trouser"
-        },
-
-        {
-            title: "Premium Pleated Trouser",
-            price: "3490",
-            image: "https://i.postimg.cc/t4C0Rq9Y/IMG-20260505-WA0031.jpg",
-            category: "trouser",
-            sizeType: "trouser"
-        },
-
-        {
-            title: "Midnight Royal Suit",
-            price: "8490",
-            image: "https://i.postimg.cc/cLv1hbcd/Custom-White-Two-Piece-Suit-Formal-Wedding-Outfit-groom-outfit.jpg",
-            category: "suit",
-            sizeType: "full"
-        },
-
-        {
-            title: "Italian Double Breasted Suit",
-            price: "9490",
-            image: "https://i.postimg.cc/8z7k40b1/Luxury-Tweed-Double-Breasted-Suit-Slim-Fit-Elegant-Formal-Wear.jpg",
-            category: "suit",
-            sizeType: "full"
-        },
-
-        {
-            title: "Executive Navy Blazer",
-            price: "7490",
-            image: "https://i.postimg.cc/0QY0S00t/Mens-navy-blue-pinstripe-double-breasted-blazer-with-white-pants-Custom-tailored-wedding-outfit.jpg",
-            category: "royyd-edit",
-            sizeType: "full"
-        },
-
-        {
-            title: "Luxury Evening Jacket",
-            price: "7490",
-            image: "https://i.postimg.cc/tgV06QnM/55cd904c2b935d2af3180755948caa18.jpg",
-            category: "royyd-edit",
-            sizeType: "full"
-        }
-
-    ];
-
-    products.forEach((product) => {
-
-        youMayLikeSlider.innerHTML += `
-
-        <div class="look-card related-product"
-
-            data-category="${product.category}"
-            data-size-type="${product.sizeType}"
-
-            data-title="${product.title}"
-            data-price="${product.price}"
-
-            data-image="${product.image}">
-
-            <img src="${product.image}">
-
-            <h4>${product.title}</h4>
-
-            <p>₹ ${product.price}</p>
-
-            <a class="mini-customize">
-            Customize →
-        </a>
-
-        </div>
-
-        `;
-
-    });
-
-}
 
 document.querySelectorAll(".faq-question").forEach((question) => {
 
@@ -2617,3 +2817,4 @@ document.querySelectorAll(".faq-question").forEach((question) => {
     });
 
 });
+

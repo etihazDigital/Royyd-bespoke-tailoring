@@ -8400,3 +8400,47 @@ body{
 
 }
 
+.royyd-toast {
+
+    position: fixed;
+
+    bottom: 30px;
+
+    right: 30px;
+
+    background: #111;
+
+    color: white;
+
+    padding: 14px 22px;
+
+    border-radius: 10px;
+
+    font-family: 'Poppins', sans-serif;
+
+    font-size: 14px;
+
+    z-index: 99999;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform: translateY(20px);
+
+    transition: all 0.3s ease;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,0.25);
+
+}
+
+.royyd-toast.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform: translateY(0);
+
+}
