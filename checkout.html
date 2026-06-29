@@ -412,10 +412,8 @@ Qty: ${product.quantity}
                     "shopifyCheckoutUrl"
                 );
 
-            console.log(
-                "SHOPIFY URL:",
-                shopifyCheckoutUrl
-            );
+            console.log("SHOPIFY CART ID:", localStorage.getItem("shopifyCartId"));
+            console.log("SHOPIFY CHECKOUT URL:", localStorage.getItem("shopifyCheckoutUrl"));
 
             if (shopifyCheckoutUrl) {
 
@@ -447,14 +445,49 @@ Qty: ${product.quantity}
                         trouserSizes,
 
                         suitSizes,
-                        
+
                         address: savedAddress
 
                     })
 
                 });
 
-                window.location.href = shopifyCheckoutUrl;
+                // Save order data first
+
+await fetch(
+    "https://royyd-backend.onrender.com/api/save-order-data",
+    {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+
+            cartId: localStorage.getItem("shopifyCartId"),
+
+            cart: cart,
+
+            shirtSizes,
+
+            trouserSizes,
+
+            suitSizes,
+
+            address: savedAddress
+
+        })
+    }
+);
+
+// Redirect customer
+
+window.location.href = shopifyCheckoutUrl;
+
+// Create a fresh Shopify cart for the next order
+
+localStorage.removeItem("shopifyCartId");
+localStorage.removeItem("shopifyCheckoutUrl");
+            
 
             }
             else {

@@ -7,33 +7,32 @@ const SHOPIFY_TOKEN =
   "36f2b6c740d7b7a4ca7494e08b176887";
 
 async function getProducts() {
+  try {
 
-    try {
+    const response =
+      await fetch(
+        "https://royyd-backend.onrender.com/api/products"
+      );
 
-        const response =
-            await fetch(
-                "https://royyd-backend.onrender.com/api/products"
-            );
+    const data =
+      await response.json();
 
-        const data =
-            await response.json();
+    console.log(
+      "BACKEND PRODUCTS:",
+      data
+    );
 
-        console.log(
-            "BACKEND PRODUCTS:",
-            data
-        );
+    return data.data.products.edges;
 
-        return data.data.products.edges;
+  }
 
-    }
+  catch (error) {
 
-    catch(error){
+    console.error(error);
 
-        console.error(error);
+    return [];
 
-        return [];
-
-    }
+  }
 
 }
 async function getBestSellerProducts() {
@@ -697,6 +696,37 @@ window.openProduct = openProduct;
 
 async function loadSingleProduct() {
 
+  const oldCheckout =
+localStorage.getItem("shopifyCheckoutUrl");
+
+if (oldCheckout) {
+
+    try {
+
+        const response = await fetch(oldCheckout, {
+            method: "HEAD",
+            redirect: "manual"
+        });
+
+        if (response.status === 404) {
+
+            console.log("OLD CHECKOUT EXPIRED");
+
+            localStorage.removeItem("shopifyCartId");
+            localStorage.removeItem("shopifyCheckoutUrl");
+
+        }
+
+    }
+
+    catch(e){
+
+        console.log(e);
+
+    }
+
+}
+
   const params =
     new URLSearchParams(window.location.search);
 
@@ -1222,10 +1252,75 @@ window.createShopifyCart =
 
 async function addToShopifyCart(variantId) {
 
-  let cartId =
-    localStorage.getItem(
-      "shopifyCartId"
-    );
+  let cartId = localStorage.getItem("shopifyCartId");
+
+  const existingCheckout =
+    localStorage.getItem("shopifyCheckoutUrl");
+
+  if (
+    !cartId ||
+    !existingCheckout
+  ) {
+
+    cartId = await createShopifyCart();
+
+  }
+
+  const sizeType = localStorage.getItem("productSizeType");
+
+  const shirtSizes =
+    JSON.parse(localStorage.getItem("royydShirtSizes")) || {};
+
+  const trouserSizes =
+    JSON.parse(localStorage.getItem("royydTrouserSizes")) || {};
+
+  const suitSizes =
+    JSON.parse(localStorage.getItem("royydSuitSizes")) || {};
+
+  const collar =
+    localStorage.getItem("collarResult");
+
+  const cuff =
+    localStorage.getItem("cuffResult");
+
+  const sleeve =
+    localStorage.getItem("sleeveResult");
+
+  const pocket =
+    localStorage.getItem("pocketResult");
+
+  const button =
+    localStorage.getItem("buttonResult");
+
+  const pleat =
+    localStorage.getItem("pleatResult");
+
+  const waist =
+    localStorage.getItem("waistResult");
+
+  const bottom =
+    localStorage.getItem("bottomResult");
+
+  const lapel =
+    localStorage.getItem("lapelResult");
+
+  const configuration =
+    localStorage.getItem("configurationResult");
+
+  const vent =
+    localStorage.getItem("ventResult");
+
+
+
+  console.log("SIZE TYPE:", sizeType);
+
+  console.log("SHIRT:", shirtSizes);
+
+  console.log("TROUSER:", trouserSizes);
+
+  console.log("SUIT:", suitSizes);
+
+  let attributes = [];
 
   if (!cartId) {
 
@@ -1233,6 +1328,166 @@ async function addToShopifyCart(variantId) {
       await createShopifyCart();
 
   }
+
+  attributes.push({
+    key: "Product Type",
+    value: sizeType
+  });
+
+  console.log("SHOPIFY ATTRIBUTES", attributes);
+
+  if (sizeType === "shirt") {
+
+    Object.entries(shirtSizes).forEach(([key, value]) => {
+
+      if (value) {
+
+        attributes.push({
+          key,
+          value: String(value)
+        });
+
+        console.log("SHOPIFY ATTRIBUTES", attributes);
+
+      }
+
+    });
+
+  }
+
+  if (collar) {
+
+    attributes.push({
+      key: "Collar",
+      value: collar
+    });
+
+  }
+
+  if (cuff) {
+
+    attributes.push({
+      key: "Cuff",
+      value: cuff
+    });
+
+  }
+
+  if (sleeve) {
+
+    attributes.push({
+      key: "Sleeve",
+      value: sleeve
+    });
+
+  }
+
+  if (pocket) {
+
+    attributes.push({
+      key: "Pocket",
+      value: pocket
+    });
+
+  }
+
+  if (button) {
+
+    attributes.push({
+      key: "Buttons",
+      value: button
+    });
+
+  }
+
+  if (sizeType === "trouser") {
+
+  if (pleat) {
+    attributes.push({
+      key: "Pleat",
+      value: pleat
+    });
+  }
+
+  if (waist) {
+    attributes.push({
+      key: "Waist",
+      value: waist
+    });
+  }
+
+  if (bottom) {
+    attributes.push({
+      key: "Bottom",
+      value: bottom
+    });
+  }
+
+}
+
+  if (sizeType === "trouser") {
+
+    Object.entries(trouserSizes).forEach(([key, value]) => {
+
+      if (value) {
+
+        attributes.push({
+          key,
+          value: String(value)
+        });
+
+        console.log("SHOPIFY ATTRIBUTES", attributes);
+
+      }
+
+    });
+
+  }
+
+  if (sizeType === "full") {
+
+    Object.entries(suitSizes).forEach(([key, value]) => {
+
+      if (value) {
+
+        attributes.push({
+          key,
+          value: String(value)
+        });
+
+        console.log("SHOPIFY ATTRIBUTES", attributes);
+
+      }
+
+    });
+
+  }
+
+  if (sizeType === "full") {
+
+  if (lapel) {
+    attributes.push({
+      key: "Lapel",
+      value: lapel
+    });
+  }
+
+  if (configuration) {
+    attributes.push({
+      key: "Configuration",
+      value: configuration
+    });
+  }
+
+  if (vent) {
+    attributes.push({
+      key: "Vent",
+      value: vent
+    });
+  }
+
+}
+
 
   const response =
     await fetch(
@@ -1316,74 +1571,7 @@ async function addToShopifyCart(variantId) {
 
                 quantity: 1,
 
-                attributes: [
-
-                  {
-                    key: "Product Type",
-                    value: localStorage.getItem("productSizeType") || ""
-                  },
-
-                  {
-                    key: "Selected Size",
-                    value: localStorage.getItem("selectedSize") || ""
-                  },
-
-                  {
-                    key: "Collar",
-                    value: localStorage.getItem("collarResult") || ""
-                  },
-
-                  {
-                    key: "Cuff",
-                    value: localStorage.getItem("cuffResult") || ""
-                  },
-
-                  {
-                    key: "Sleeve",
-                    value: localStorage.getItem("sleeveResult") || ""
-                  },
-
-                  {
-                    key: "Pocket",
-                    value: localStorage.getItem("pocketResult") || ""
-                  },
-
-                  {
-                    key: "Buttons",
-                    value: localStorage.getItem("buttonResult") || ""
-                  },
-
-                  {
-                    key: "Pleat",
-                    value: localStorage.getItem("pleatResult") || ""
-                  },
-
-                  {
-                    key: "Waist Style",
-                    value: localStorage.getItem("waistResult") || ""
-                  },
-
-                  {
-                    key: "Bottom",
-                    value: localStorage.getItem("bottomResult") || ""
-                  },
-
-                  {
-                    key: "Lapel",
-                    value: localStorage.getItem("lapelResult") || ""
-                  },
-
-                  {
-                    key: "Configuration",
-                    value: localStorage.getItem("configurationResult") || ""
-                  },
-
-                  {
-                    key: "Vent",
-                    value: localStorage.getItem("ventResult") || ""
-                  }
-
-                ]
+                attributes: attributes
               }
             ]
           }
@@ -1422,26 +1610,26 @@ async function addToShopifyCart(variantId) {
     data.data.cartLinesAdd.cart.lines.edges
   );
 
- const cart =
+  const cart =
     data.data.cartLinesAdd.cart;
 
-const addedLine =
+  const addedLine =
     cart.lines.edges.find(edge => {
 
-        return (
-            edge.node.merchandise.id === variantId &&
-            edge.node.quantity === 1
-        );
+      return (
+        edge.node.merchandise.id === variantId &&
+        edge.node.quantity === 1
+      );
 
     });
 
-if (!addedLine) {
+  if (!addedLine) {
 
     throw new Error("Unable to locate Shopify cart line.");
 
-}
+  }
 
-return addedLine.node.id;
+  return addedLine.node.id;
 
   console.log(
     "ADDED LINE ID:",
