@@ -128,6 +128,16 @@ app.post("/api/save-order-data", async (req, res) => {
 
 });
 
+app.post("/webhooks/order-paid", async (req, res) => {
+
+    console.log("============= PAYMENT RECEIVED =============");
+
+    console.log(JSON.stringify(req.body, null, 2));
+
+    res.status(200).send("OK");
+
+});
+
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
