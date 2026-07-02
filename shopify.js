@@ -1614,14 +1614,20 @@ async function addToShopifyCart(variantId) {
     data.data.cartLinesAdd.cart;
 
   const addedLine =
-    cart.lines.edges.find(edge => {
+cart.lines.edges.find(
+edge =>
+edge.node.merchandise.id === variantId
+);
 
-      return (
-        edge.node.merchandise.id === variantId &&
-        edge.node.quantity === 1
-      );
+if (!addedLine) {
 
-    });
+console.log(cart.lines.edges);
+
+throw new Error("Unable to locate Shopify cart line.");
+
+}
+
+return addedLine.node.id;
 
   if (!addedLine) {
 
